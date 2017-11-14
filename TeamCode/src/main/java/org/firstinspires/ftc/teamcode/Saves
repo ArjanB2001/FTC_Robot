@@ -1,0 +1,17 @@
+//nxt onderdelen
+Electric Mindstorms NXT Ultrasonic Sensor
+Electric Mindstorms NXT Color Sensor / Color Lamp
+Electric Mindstorms NXT Light Sensor
+
+//achtergrond kleur veranderen
+relativeLayout.post(new Runnable() {
+            public void run() {
+                relativeLayout.setBackgroundColor(Color.WHITE);
+            }
+        });
+
+
+    public DcMotor frontLeftPower;
+    public DcMotor backLeftPower;
+    public DcMotor frontRightPower;
+    public DcMotor backRightPower;
