@@ -6,11 +6,12 @@ import com.qualcomm.robotcore.util.Range;
 
 @TeleOp(name = "TeleOpMode", group = "Linear Opmode")
 public class TeleOpPeriod extends LinearOpMode {
-    //om HardwareVar class te kunnen gebruiken
+
+    //om HardwareVar class te kunnen gebruiken (gebruik voor elke variabele r.)
     HardwareVar r = new HardwareVar();
 
     public void runOpMode(){
-        //robotTest. runt HardwareVar class
+        //r. runt HardwareVar class
         r.init(hardwareMap);
         //reset de timer
         r.runtime.reset();
@@ -18,6 +19,7 @@ public class TeleOpPeriod extends LinearOpMode {
         waitForStart();
 
         while(opModeIsActive()){
+
             //Tank Mode is niet ingebruik
             //<editor-fold default="folded" desc="Tank Mode">
 
@@ -33,53 +35,33 @@ public class TeleOpPeriod extends LinearOpMode {
             //left stick op x-as en y-as, om vooruit, achteruit, links en rechts te gaan
             double drive = this.gamepad1.left_stick_y;
             double turn  = this.gamepad1.left_stick_x;
-            r.flp = Range.clip(drive + turn, -1.0, 1.0);
-            r.blp = Range.clip(drive + turn, -1.0, 1.0);
-            r.frp = Range.clip(drive - turn, -1.0, 1.0);
-            r.brp = Range.clip(drive - turn, -1.0, 1.0);
+            r.LFpower = Range.clip(drive + turn, -1.0, 1.0);
+            r.LBpower = Range.clip(drive + turn, -1.0, 1.0);
+            r.RFpower = Range.clip(drive - turn, -1.0, 1.0);
+            r.RBpower = Range.clip(drive - turn, -1.0, 1.0);
 
             //</editor-fold>
 
-            /*
-            //<editor-fold default="folded" desc="Exact-left,right-Control right-stick">
+            //<editor-fold default="folded" desc="Crab Movement left&right_trigger">
 
-            //right stick op x-as, om precies naar links en rechts te draaien.
-            if (gamepad1.right_stick_x>0){
-                leftPower  =-gamepad1.right_stick_x ;
-                rightPower = gamepad1.right_stick_x ;
-            } else if (gamepad1.right_stick_x<0){
-                leftPower  =-gamepad1.right_stick_x;
-                rightPower = gamepad1.right_stick_x;
-            } else {
-                telemetry.addData("Motors", "not active");
-                telemetry.update();
+            if(gamepad1.left_trigger>0){
+                r.LFpower = gamepad1.left_trigger;
+                r.LBpower = gamepad1.left_trigger;
+                r.RFpower = gamepad1.left_trigger;
+                r.RBpower = gamepad1.left_trigger;
+
             }
 
             //</editor-fold>
 
-            //<editor-fold default="folded" desc="Exact-forward,back-Control left_right_trigger">
+                //<editor-fold default="folded" desc="Geef motors bepaalde kracht">
 
-            //left- en right trigger om precies vooruit en achteruit te rijden
-            // left trigger achteruit; right trigger vooruit
-            if (gamepad1.left_trigger>0){
-                leftPower = -gamepad1.left_trigger;
-                rightPower = -gamepad1.left_trigger;
-            } else if(gamepad1.right_trigger>0){
-                leftPower = gamepad1.right_trigger;
-                rightPower = gamepad1.right_trigger;
-            } else {
-                telemetry.addData("Motors", "not active");
-                telemetry.update();
-            }
+            r.LFmotor.setPower(r.LFpower);
+            r.LBmotor.setPower(r.LBpower);
+            r.RFmotor.setPower(r.RFpower);
+            r.RBmotor.setPower(r.RBpower);
 
             //</editor-fold>
-            */
-
-            //geef motors bepaalde kracht
-            r.frontLeftDrive.setPower(r.flp);
-            r.backLeftDrive.setPower(r.blp);
-            r.frontRightDrive.setPower(r.frp);
-            r.backRightDrive.setPower(r.brp);
 
         }
     }

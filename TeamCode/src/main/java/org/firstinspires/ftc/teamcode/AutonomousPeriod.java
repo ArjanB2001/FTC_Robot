@@ -62,29 +62,31 @@ public class AutonomousPeriod extends LinearOpMode {
         // run until the end of the match (driver presses STOP)
         while (opModeIsActive()) {
 
-            r.flp = 1;
-            r.blp = 1;
-            r.frp = 1;
-            r.brp = 1;
+            //<editor-fold default="folded" desc="Make patern till in range"
 
-            r.frontLeftDrive.setPower(r.flp);
-            r.backLeftDrive.setPower(r.blp);
-            r.frontRightDrive.setPower(r.frp);
-            r.backRightDrive.setPower(r.brp);
+            r.LFpower = 1;
+            r.LBpower = 1;
+            r.RFpower = 1;
+            r.RBpower = 1;
 
-            sleep(1000);
+            r.LFmotor.setPower(r.LFpower);
+            r.LBmotor.setPower(r.LBpower);
+            r.RFmotor.setPower(r.RFpower);
+            r.RBmotor.setPower(r.RBpower);
 
-            r.flp = 0;
-            r.blp = 0;
-            r.frp = 0;
-            r.brp = 0;
+            sleep(200);
 
-            r.frontLeftDrive.setPower(r.flp);
-            r.backLeftDrive.setPower(r.blp);
-            r.frontRightDrive.setPower(r.frp);
-            r.backRightDrive.setPower(r.brp);
+            r.LFpower = 0;
+            r.LBpower = 0;
+            r.RFpower = 0;
+            r.RBpower = 0;
 
-            sleep(1000);
+            r.LFmotor.setPower(r.LFpower);
+            r.LBmotor.setPower(r.LBpower);
+            r.RFmotor.setPower(r.RFpower);
+            r.RBmotor.setPower(r.RBpower);
+
+            sleep(200);
 
             telemetry.addData("Distance (cm)", r.rangeSensor.getUltrasonicLevel());
             telemetry.update();
@@ -98,6 +100,8 @@ public class AutonomousPeriod extends LinearOpMode {
                         break;
                     }
             }
+
+            //</editor-fold>
 
 
             }

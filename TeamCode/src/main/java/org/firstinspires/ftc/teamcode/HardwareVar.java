@@ -41,23 +41,26 @@ public class HardwareVar
 {
     /* Public OpMode members. */
     private MatrixDcMotorController motorController = null;
-    private ServoController servoController = null;
+    private ServoController         servoController = null;
 
-    public DcMotor frontLeftDrive;
-    public DcMotor backLeftDrive;
-    public DcMotor frontRightDrive;
-    public DcMotor backRightDrive;
+    public DcMotor LFmotor;
+    public DcMotor LBmotor;
+    public DcMotor RFmotor;
+    public DcMotor RBmotor;
     public Servo servo1;
     public Servo servo2;
-    public UltrasonicSensor rangeSensor;
-    public HiTechnicNxtColorSensor colorSensor;
-    public TouchSensor touchSensor;
+    public UltrasonicSensor         rangeSensor;
+    public HiTechnicNxtColorSensor  colorSensor;
+    public TouchSensor              touchSensor;
+    public double LFpower;
+    public double LBpower;
+    public double RFpower;
+    public double RBpower;
 
     public ElapsedTime runtime = new ElapsedTime();
 
     /* Constructor */
     public HardwareVar(){
-
     }
 
     /* Initialize standard Hardware interfaces */
@@ -71,15 +74,15 @@ public class HardwareVar
         servoController = ahwMap.get(ServoController.class, "matrix controller");
 
         //Motoren
-        frontLeftDrive  = ahwMap.get(DcMotor.class, "front_left_drive");
-        backLeftDrive   = ahwMap.get(DcMotor.class, "back_left_drive");
-        frontRightDrive = ahwMap.get(DcMotor.class, "front_right_drive");
-        backRightDrive  = ahwMap.get(DcMotor.class, "back_right_drive");
+        LFmotor = ahwMap.get(DcMotor.class, "front_left_drive");
+        LBmotor = ahwMap.get(DcMotor.class, "back_left_drive");
+        RFmotor = ahwMap.get(DcMotor.class, "front_right_drive");
+        RBmotor = ahwMap.get(DcMotor.class, "back_right_drive");
 
-        frontLeftDrive.setDirection(DcMotor.Direction.FORWARD);
-        backLeftDrive.setDirection(DcMotor.Direction.FORWARD);
-        frontRightDrive.setDirection(DcMotor.Direction.REVERSE);
-        backRightDrive.setDirection(DcMotor.Direction.REVERSE);
+        LFmotor.setDirection(DcMotor.Direction.FORWARD);
+        LBmotor.setDirection(DcMotor.Direction.FORWARD);
+        RFmotor.setDirection(DcMotor.Direction.REVERSE);
+        RBmotor.setDirection(DcMotor.Direction.REVERSE);
 
         //Servo's
         servo1 = ahwMap.get(Servo.class, "servo1");

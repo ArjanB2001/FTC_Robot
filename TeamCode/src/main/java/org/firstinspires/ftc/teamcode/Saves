@@ -17,3 +17,37 @@ relativeLayout.post(new Runnable() {
     public DcMotor backRightPower;
 
 test line
+
+
+            //<editor-fold default="folded" desc="Exact-left,right-Control right-stick">
+
+            //right stick op x-as, om precies naar links en rechts te draaien.
+            if (gamepad1.right_stick_x>0){
+                leftPower  =-gamepad1.right_stick_x ;
+                rightPower = gamepad1.right_stick_x ;
+            } else if (gamepad1.right_stick_x<0){
+                leftPower  =-gamepad1.right_stick_x;
+                rightPower = gamepad1.right_stick_x;
+            } else {
+                telemetry.addData("Motors", "not active");
+                telemetry.update();
+            }
+
+            //</editor-fold>
+
+            //<editor-fold default="folded" desc="Exact-forward,back-Control left_right_trigger">
+
+            //left- en right trigger om precies vooruit en achteruit te rijden
+            // left trigger achteruit; right trigger vooruit
+            if (gamepad1.left_trigger>0){
+                leftPower = -gamepad1.left_trigger;
+                rightPower = -gamepad1.left_trigger;
+            } else if(gamepad1.right_trigger>0){
+                leftPower = gamepad1.right_trigger;
+                rightPower = gamepad1.right_trigger;
+            } else {
+                telemetry.addData("Motors", "not active");
+                telemetry.update();
+            }
+
+            //</editor-fold>
