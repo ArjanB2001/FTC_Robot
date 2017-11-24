@@ -34,26 +34,29 @@ import android.graphics.Color;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
-@TeleOp(name = "Range Sensor", group = "Sensor")
+@TeleOp(name = "Range+Touch Sensor", group = "Sensor")
 //@Disabled
 public class RangeSensor extends LinearOpMode {
 
-            HardwareVar robotTest = new HardwareVar();
+            HardwareVar r = new HardwareVar();
 
     @Override public void runOpMode() {
 
-            robotTest.init(hardwareMap);
+            r.init(hardwareMap);
 
             // wait for the start button to be pressed
             waitForStart();
 
             while (opModeIsActive()) {
-                double touchValue = robotTest.touchSensor.getValue();
 
                 // send the info back to driver station using telemetry function.
-                if (robotTest.touchSensor.isPressed()) {
-                    telemetry.addData("Distance (cm)", robotTest.rangeSensor.getUltrasonicLevel());
+                if (r.touchSensor.isPressed()) {
+                    telemetry.addData("Touch sensor", "pressed");
+                } else {
+                    telemetry.addData("Touch sensor", "not pressed");
                 }
+                telemetry.addData("Range: ", r.rangeSensor.getUltrasonicLevel());
+                telemetry.addData("Runtime",r.runtime);
                 telemetry.update();
         }
     }
