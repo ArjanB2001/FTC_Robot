@@ -33,26 +33,36 @@ public class TeleOpPeriod extends LinearOpMode {
             //<editor-fold default="folded" desc="Master Control left_stick">
 
             //left stick op x-as en y-as, om vooruit, achteruit, links en rechts te gaan
-            double drive = this.gamepad1.left_stick_y;
-            double turn  = this.gamepad1.left_stick_x;
-            r.LFpower = Range.clip(drive + turn, -1.0, 1.0);
-            r.LBpower = Range.clip(drive + turn, -1.0, 1.0);
-            r.RFpower = Range.clip(drive - turn, -1.0, 1.0);
-            r.RBpower = Range.clip(drive - turn, -1.0, 1.0);
+            double drive = -this.gamepad1.left_stick_y;
+            double turn  = -this.gamepad1.left_stick_x;
+            r.LFpower = Range.clip(drive + turn, -0.5, 0.5);
+            r.LBpower = Range.clip(drive + turn, -0.5, 0.5);
+            r.RFpower = Range.clip(drive - turn, -0.5, 0.5);
+            r.RBpower = Range.clip(drive - turn, -0.5, 0.5);
 
             //</editor-fold>
 
             //<editor-fold default="folded" desc="Crab Movement left&right_trigger">
 
             if(gamepad1.left_trigger>0){
-                r.LFpower = gamepad1.left_trigger;
-                r.LBpower = gamepad1.left_trigger;
-                r.RFpower = gamepad1.left_trigger;
-                r.RBpower = gamepad1.left_trigger;
+                r.LFpower = -gamepad1.left_trigger;
+                r.LBpower =  gamepad1.left_trigger;
+                r.RFpower = -gamepad1.left_trigger;
+                r.RBpower =  gamepad1.left_trigger;
+
+            }
+
+            if(gamepad1.right_trigger>0){
+                r.LFpower =  gamepad1.right_trigger;
+                r.LBpower = -gamepad1.right_trigger;
+                r.RFpower =  gamepad1.right_trigger;
+                r.RBpower = -gamepad1.right_trigger;
 
             }
 
             //</editor-fold>
+
+
 
                 //<editor-fold default="folded" desc="Geef motors bepaalde kracht">
 

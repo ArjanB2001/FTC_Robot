@@ -80,9 +80,9 @@ public class HardwareVar
         RBmotor = ahwMap.get(DcMotor.class, "back_right_drive");
 
         LFmotor.setDirection(DcMotor.Direction.FORWARD);
-        LBmotor.setDirection(DcMotor.Direction.FORWARD);
-        RFmotor.setDirection(DcMotor.Direction.REVERSE);
-        RBmotor.setDirection(DcMotor.Direction.REVERSE);
+        LBmotor.setDirection(DcMotor.Direction.REVERSE);
+        RFmotor.setDirection(DcMotor.Direction.FORWARD);
+        RBmotor.setDirection(DcMotor.Direction.FORWARD);
 
         //Servo's
         servo1 = ahwMap.get(Servo.class, "servo1");
