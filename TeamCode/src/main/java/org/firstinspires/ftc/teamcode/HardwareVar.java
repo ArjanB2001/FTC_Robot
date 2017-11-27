@@ -49,6 +49,7 @@ public class HardwareVar
     public DcMotor RBmotor;
     public Servo servo1;
     public Servo servo2;
+    public Servo legoServo;
     public UltrasonicSensor         rangeSensor;
     public HiTechnicNxtColorSensor  colorSensor;
     public TouchSensor              touchSensor;
@@ -79,7 +80,7 @@ public class HardwareVar
         LBmotor = ahwMap.get(DcMotor.class, "LFmotor");
         LFmotor = ahwMap.get(DcMotor.class, "LFmotor");
 
-        LFmotor.setDirection(DcMotor.Direction.FORWARD);
+        LFmotor.setDirection(DcMotor.Direction.REVERSE);
         LBmotor.setDirection(DcMotor.Direction.REVERSE);
         RFmotor.setDirection(DcMotor.Direction.FORWARD);
         RBmotor.setDirection(DcMotor.Direction.FORWARD);
@@ -87,6 +88,7 @@ public class HardwareVar
         //Servo's
         servo1 = ahwMap.get(Servo.class, "servo1");
         servo2 = ahwMap.get(Servo.class, "servo2");
+        legoServo = ahwMap.get(Servo.class, "legoServo");
 
         //Sensoren
         rangeSensor = ahwMap.get(UltrasonicSensor.class, "rangeSensor");

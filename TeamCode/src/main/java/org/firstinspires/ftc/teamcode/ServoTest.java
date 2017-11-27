@@ -77,18 +77,7 @@ public class ServoTest extends LinearOpMode {
         //servo2.setPosition(0.1);
         // run until the end of the match (driver presses STOP)
         while (opModeIsActive()) {
-            telemetry.addData("Status", "Run Time: " + rb.runtime.toString());
-            telemetry.addData("Status Servo's", rb.servo1.getPosition() + " || " + rb.servo2.getPosition());
-            telemetry.update();
-            rb.servo1.setPosition(0.1);
-            rb.servo2.setPosition(0.1);
-            telemetry.addData("Status", "Run Time: " + rb.runtime.toString());
-            telemetry.addData("Status Servo's", rb.servo1.getPosition() + " || " + rb.servo2.getPosition());
-            telemetry.update();
-            sleep(2000);
-            rb.servo1.setPosition(0.9);
-            rb.servo2.setPosition(0.9);
-            sleep(2000);
+
         }
     }
 }
