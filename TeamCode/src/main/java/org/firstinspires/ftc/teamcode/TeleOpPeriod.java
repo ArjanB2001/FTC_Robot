@@ -34,15 +34,15 @@ public class TeleOpPeriod extends LinearOpMode {
 
             //left stick op x-as en y-as, om vooruit, achteruit, links en rechts te gaan
             double drive = -this.gamepad1.left_stick_y;
-            double turn  = -this.gamepad1.left_stick_x;
-            r.LFpower = Range.clip(drive + turn, -0.2, 0.2);
-            r.LBpower = Range.clip(drive + turn, -0.2, 0.2);
-            r.RFpower = Range.clip(drive - turn, -0.2, 0.2);
-            r.RBpower = Range.clip(drive - turn, -0.2, 0.2);
+            double turn  =  this.gamepad1.left_stick_x;
+            double Turn  =  Range.clip(turn, -0.2, 0.2);
+
+            r.LFpower = Range.clip(drive + Turn, -0.9, 0.9);
+            r.LBpower = Range.clip(drive + Turn, -0.9, 0.9);
+            r.RFpower = Range.clip(drive - Turn, -0.9, 0.9);
+            r.RBpower = Range.clip(drive - Turn, -0.9, 0.9);
 
             //</editor-fold>1
-
-
 
             //<editor-fold default="folded" desc="Crab Movement left&right_trigger">
 

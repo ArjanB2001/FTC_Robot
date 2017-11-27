@@ -89,18 +89,18 @@ public class AutonomousPeriod extends LinearOpMode {
 
             sleep(200);
 
-            telemetry.addData("Distance (cm)", r.rangeSensor.getUltrasonicLevel());
-            telemetry.update();
-
-            if (r.rangeSensor.getUltrasonicLevel() > 0.0) {
-
-                    telemetry.addData("Distance (cm)", r.rangeSensor.getUltrasonicLevel());
-                    telemetry.update();
-
-                    if(r.rangeSensor.getUltrasonicLevel() <= 15){
-                        break;
-                    }
-            }
+//            telemetry.addData("Distance (cm)", r.rangeSensor.getUltrasonicLevel());
+//            telemetry.update();
+//
+//            if (r.rangeSensor.getUltrasonicLevel() > 0.0) {
+//
+//                    telemetry.addData("Distance (cm)", r.rangeSensor.getUltrasonicLevel());
+//                    telemetry.update();
+//
+//                    if(r.rangeSensor.getUltrasonicLevel() <= 15){
+//                        break;
+//                    }
+//            }
 
             //</editor-fold>
 

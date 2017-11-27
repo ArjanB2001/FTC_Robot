@@ -49,15 +49,15 @@ public class AllSensors extends LinearOpMode {
 
             while (opModeIsActive()) {
 
-                // send the info back to driver station using telemetry function.
-                if (r.touchSensor.isPressed()) {
-                    telemetry.addData("Touch sensor", "pressed");
-                } else {
-                    telemetry.addData("Touch sensor", "not pressed");
-                }
-                telemetry.addData("Range: ", r.rangeSensor.getUltrasonicLevel());
-                telemetry.addData("Runtime",r.runtime);
-                telemetry.update();
+//                // send the info back to driver station using telemetry function.
+//                if (r.touchSensor.isPressed()) {
+//                    telemetry.addData("Touch sensor", "pressed");
+//                } else {
+//                    telemetry.addData("Touch sensor", "not pressed");
+//                }
+//                telemetry.addData("Range: ", r.rangeSensor.getUltrasonicLevel());
+//                telemetry.addData("Runtime",r.runtime);
+//                telemetry.update();
         }
     }
 }

@@ -47,12 +47,12 @@ public class HardwareVar
     public DcMotor LBmotor;
     public DcMotor RFmotor;
     public DcMotor RBmotor;
-    public Servo servo1;
-    public Servo servo2;
-    public Servo legoServo;
-    public UltrasonicSensor         rangeSensor;
+//    public Servo servo1;
+//    public Servo servo2;
+//    public Servo legoServo;
+//    public UltrasonicSensor         rangeSensor;
     public HiTechnicNxtColorSensor  colorSensor;
-    public TouchSensor              touchSensor;
+//    public TouchSensor              touchSensor;
     public double LFpower;
     public double LBpower;
     public double RFpower;
@@ -77,25 +77,25 @@ public class HardwareVar
         //Motoren
         RBmotor = ahwMap.get(DcMotor.class, "RBmotor");
         RFmotor = ahwMap.get(DcMotor.class, "RFmotor");
-        LBmotor = ahwMap.get(DcMotor.class, "LFmotor");
+        LBmotor = ahwMap.get(DcMotor.class, "LBmotor");
         LFmotor = ahwMap.get(DcMotor.class, "LFmotor");
 
         LFmotor.setDirection(DcMotor.Direction.REVERSE);
         LBmotor.setDirection(DcMotor.Direction.REVERSE);
         RFmotor.setDirection(DcMotor.Direction.FORWARD);
-        RBmotor.setDirection(DcMotor.Direction.FORWARD);
+        RBmotor.setDirection(DcMotor.Direction.REVERSE);
 
-        //Servo's
-        servo1 = ahwMap.get(Servo.class, "servo1");
-        servo2 = ahwMap.get(Servo.class, "servo2");
-        legoServo = ahwMap.get(Servo.class, "legoServo");
-
-        //Sensoren
-        rangeSensor = ahwMap.get(UltrasonicSensor.class, "rangeSensor");
+//        //Servo's
+//        servo1 = ahwMap.get(Servo.class, "servo1");
+//        servo2 = ahwMap.get(Servo.class, "servo2");
+//        legoServo = ahwMap.get(Servo.class, "legoServo");
+//
+//        //Sensoren
+//        rangeSensor = ahwMap.get(UltrasonicSensor.class, "rangeSensor");
         colorSensor = ahwMap.get(HiTechnicNxtColorSensor.class, "colorSensor");
-        touchSensor = ahwMap.get(TouchSensor.class, "touchSensor");
-
-        // Enable Servos
-        servoController.pwmEnable();       // Don't forget to enable Matrix Output
+//        touchSensor = ahwMap.get(TouchSensor.class, "touchSensor");
+//
+//        // Enable Servos
+//        servoController.pwmEnable();       // Don't forget to enable Matrix Output
     }
 }
