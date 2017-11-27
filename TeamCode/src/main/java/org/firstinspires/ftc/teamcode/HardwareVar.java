@@ -70,14 +70,14 @@ public class HardwareVar
         //super.init(ahwMap);
 
         // Initialize Matrix Motor and Servo objects
-        motorController = ahwMap.get(MatrixDcMotorController.class, "matrix controller");
-        servoController = ahwMap.get(ServoController.class, "matrix controller");
+        motorController = ahwMap.get(MatrixDcMotorController.class, "matrixController");
+        servoController = ahwMap.get(ServoController.class, "matrixController");
 
         //Motoren
-        LFmotor = ahwMap.get(DcMotor.class, "front_left_drive");
-        LBmotor = ahwMap.get(DcMotor.class, "back_left_drive");
-        RFmotor = ahwMap.get(DcMotor.class, "front_right_drive");
-        RBmotor = ahwMap.get(DcMotor.class, "back_right_drive");
+        RBmotor = ahwMap.get(DcMotor.class, "RBmotor");
+        RFmotor = ahwMap.get(DcMotor.class, "RFmotor");
+        LBmotor = ahwMap.get(DcMotor.class, "LFmotor");
+        LFmotor = ahwMap.get(DcMotor.class, "LFmotor");
 
         LFmotor.setDirection(DcMotor.Direction.FORWARD);
         LBmotor.setDirection(DcMotor.Direction.REVERSE);
@@ -89,9 +89,9 @@ public class HardwareVar
         servo2 = ahwMap.get(Servo.class, "servo2");
 
         //Sensoren
-        rangeSensor = ahwMap.get(UltrasonicSensor.class, "range_sensor");
-        colorSensor = ahwMap.get(HiTechnicNxtColorSensor.class, "color_sensor");
-        touchSensor = ahwMap.get(TouchSensor.class, "touch_sensor");
+        rangeSensor = ahwMap.get(UltrasonicSensor.class, "rangeSensor");
+        colorSensor = ahwMap.get(HiTechnicNxtColorSensor.class, "colorSensor");
+        touchSensor = ahwMap.get(TouchSensor.class, "touchSensor");
 
         // Enable Servos
         servoController.pwmEnable();       // Don't forget to enable Matrix Output

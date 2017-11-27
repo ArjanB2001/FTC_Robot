@@ -35,10 +35,10 @@ public class TeleOpPeriod extends LinearOpMode {
             //left stick op x-as en y-as, om vooruit, achteruit, links en rechts te gaan
             double drive = -this.gamepad1.left_stick_y;
             double turn  = -this.gamepad1.left_stick_x;
-            r.LFpower = Range.clip(drive + turn, -0.5, 0.5);
-            r.LBpower = Range.clip(drive + turn, -0.5, 0.5);
-            r.RFpower = Range.clip(drive - turn, -0.5, 0.5);
-            r.RBpower = Range.clip(drive - turn, -0.5, 0.5);
+            r.LFpower = Range.clip(drive + turn, -0.2, 0.2);
+            r.LBpower = Range.clip(drive + turn, -0.2, 0.2);
+            r.RFpower = Range.clip(drive - turn, -0.2, 0.2);
+            r.RBpower = Range.clip(drive - turn, -0.2, 0.2);
 
             //</editor-fold>
 
@@ -61,8 +61,6 @@ public class TeleOpPeriod extends LinearOpMode {
             }
 
             //</editor-fold>
-
-
 
                 //<editor-fold default="folded" desc="Geef motors bepaalde kracht">
 
