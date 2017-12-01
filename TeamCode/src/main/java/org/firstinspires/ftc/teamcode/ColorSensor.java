@@ -52,12 +52,12 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 @Disabled
 public class ColorSensor extends LinearOpMode {
 
-
+  HardwareVar r = new HardwareVar();
 
 
   @Override
   public void runOpMode() {
-
+      r.init(hardwareMap);
 
 
     // wait for the start button to be pressed.
@@ -67,10 +67,13 @@ public class ColorSensor extends LinearOpMode {
     // Note we use opModeIsActive() as our loop condition because it is an interruptible method.
     while (opModeIsActive())  {
 
-      telemetry.addData("Clear", colorSensor.alpha());
-      telemetry.addData("Red  ", colorSensor.red());
-      telemetry.addData("Green", colorSensor.green());
-      telemetry.addData("Blue ", colorSensor.blue());
+      if(colorSensor.red() > 150 );
+
+
+      telemetry.addData("Clear", r.colorSensor.alpha());
+      telemetry.addData("Red  ", r.colorSensor.red());
+      telemetry.addData("Green", r.colorSensor.green());
+      telemetry.addData("Blue ", r.colorSensor.blue());
 
 
       telemetry.update();
