@@ -4,8 +4,8 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.util.Range;
 
-@TeleOp(name = "Delayed Acceleration", group = "Linear Opmode")
-public class DelayedAcceleration extends LinearOpMode {
+@TeleOp(name = "Delayed Acceleration V1", group = "Linear Opmode")
+public class DelayedAccelerationV1 extends LinearOpMode {
 
     //om HardwareVar class te kunnen gebruiken (gebruik voor elke variabele r.)
     HardwareVar r = new HardwareVar();
@@ -18,9 +18,10 @@ public class DelayedAcceleration extends LinearOpMode {
         //wacht tot play (niet init) ingedrukt wordt
         waitForStart();
 
+        //full power
         while (opModeIsActive()) {
 
-            //<editor-fold default="folded" desc="Motor kracht 0.1">
+            //<editor-fold default="closed" desc="Motor kracht 0.1">
 
             r.LFpower = Range.clip(gamepad1.left_stick_y, -0.1, 0.1);
             r.LBpower = Range.clip(gamepad1.left_stick_y, -0.1, 0.1);
