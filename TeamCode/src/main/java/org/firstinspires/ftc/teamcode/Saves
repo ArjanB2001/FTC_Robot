@@ -51,3 +51,18 @@ test line
             }
 
             //</editor-fold>
+
+
+
+            telemetry.addData("Distance (cm)", r.rangeSensor.getUltrasonicLevel());
+            //            telemetry.update();
+            //
+            //            if (r.rangeSensor.getUltrasonicLevel() > 0.0) {
+            //
+            //                    telemetry.addData("Distance (cm)", r.rangeSensor.getUltrasonicLevel());
+            //                    telemetry.update();
+            //
+            //                    if(r.rangeSensor.getUltrasonicLevel() <= 15){
+            //                        break;
+            //                    }
+            //            }
