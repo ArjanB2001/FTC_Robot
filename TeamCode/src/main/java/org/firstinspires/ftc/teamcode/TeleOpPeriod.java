@@ -64,7 +64,7 @@ public class TeleOpPeriod extends LinearOpMode {
 
             //</editor-fold>
 
-                //<editor-fold default="folded" desc="Geef motors bepaalde kracht">
+            //<editor-fold default="folded" desc="Geef motors bepaalde kracht">
 
             r.LFmotor.setPower(r.LFpower);
             r.LBmotor.setPower(r.LBpower);

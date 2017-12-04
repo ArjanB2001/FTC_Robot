@@ -65,7 +65,7 @@ public class ColorSensor extends LinearOpMode {
     // Note we use opModeIsActive() as our loop condition because it is an interruptible method.
     while (opModeIsActive())  {
 
-      if(colorSensor.red() > 150 );
+      if(r.colorSensor.red() > 150 );
 
 
 
