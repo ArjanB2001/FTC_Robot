@@ -54,11 +54,9 @@ public class ColorSensor extends LinearOpMode {
 
   HardwareVar r = new HardwareVar();
 
-
   @Override
   public void runOpMode() {
       r.init(hardwareMap);
-
 
     // wait for the start button to be pressed.
     waitForStart();
@@ -70,6 +68,7 @@ public class ColorSensor extends LinearOpMode {
       if(colorSensor.red() > 150 );
 
 
+
       telemetry.addData("Clear", r.colorSensor.alpha());
       telemetry.addData("Red  ", r.colorSensor.red());
       telemetry.addData("Green", r.colorSensor.green());
@@ -78,10 +77,5 @@ public class ColorSensor extends LinearOpMode {
 
       telemetry.update();
     }
-
-
-
-
-
   }
 }
