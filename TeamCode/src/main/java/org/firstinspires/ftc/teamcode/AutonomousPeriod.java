@@ -62,49 +62,11 @@ public class AutonomousPeriod extends LinearOpMode {
 
         // run until the end of the match (driver presses STOP)
         while (opModeIsActive()) {
-
-            //<editor-fold default="folded" desc="Make patern till in range"
-
-            r.LFpower = 1;
-            r.LBpower = 1;
-            r.RFpower = 1;
-            r.RBpower = 1;
-
-            r.LFmotor.setPower(r.LFpower);
-            r.LBmotor.setPower(r.LBpower);
-            r.RFmotor.setPower(r.RFpower);
-            r.RBmotor.setPower(r.RBpower);
-
-            sleep(200);
-
-            r.LFpower = 0;
-            r.LBpower = 0;
-            r.RFpower = 0;
-            r.RBpower = 0;
-
-            r.LFmotor.setPower(r.LFpower);
-            r.LBmotor.setPower(r.LBpower);
-            r.RFmotor.setPower(r.RFpower);
-            r.RBmotor.setPower(r.RBpower);
-
-            sleep(200);
-
-//            telemetry.addData("Distance (cm)", r.rangeSensor.getUltrasonicLevel());
-//            telemetry.update();
-//
-//            if (r.rangeSensor.getUltrasonicLevel() > 0.0) {
-//
-//                    telemetry.addData("Distance (cm)", r.rangeSensor.getUltrasonicLevel());
-//                    telemetry.update();
-//
-//                    if(r.rangeSensor.getUltrasonicLevel() <= 15){
-//                        break;
-//                    }
-//            }
-
-            //</editor-fold>
-
-
-            }
+            /////
+            //colorSensor herkennings shit waar Anouk mee bezig is
+            /////
+            r.powerAll(0.2);
+            sleep(500);
         }
     }
+}

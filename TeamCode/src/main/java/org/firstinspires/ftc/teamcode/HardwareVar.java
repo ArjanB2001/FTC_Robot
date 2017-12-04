@@ -98,4 +98,12 @@ public class HardwareVar
 //        // Enable Servos
 //        servoController.pwmEnable();       // Don't forget to enable Matrix Output
     }
+
+
+    public void powerAll(double power) {
+        LFmotor.setPower(power);
+        RFmotor.setPower(power);
+        LBmotor.setPower(power);
+        RBmotor.setPower(power);
+    }
 }
