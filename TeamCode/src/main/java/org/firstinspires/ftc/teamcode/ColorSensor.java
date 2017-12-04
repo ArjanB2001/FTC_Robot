@@ -65,8 +65,17 @@ public class ColorSensor extends LinearOpMode {
     // Note we use opModeIsActive() as our loop condition because it is an interruptible method.
     while (opModeIsActive())  {
 
-      if(r.colorSensor.red() > 150 );
+      // zorg ervoor dat hij bij elke kleur wat leuks doet, bijv. rood -> zeg rood
+      // blauw, zeg blauw ofzo. Dit kan allemaal aangepast worden als ze weten wat de kleurensensor in gang moet gaan zetten.
 
+        if(colorSensor.red() > 150 );
+            //...
+
+        if(colorSensor.green() > 150 );
+            //...
+
+        if(colorSensor.Blue() > 150);
+            //...
 
 
       telemetry.addData("Clear", r.colorSensor.alpha());
