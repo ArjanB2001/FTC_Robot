@@ -28,21 +28,26 @@
  */
 
 package org.firstinspires.ftc.teamcode;
-
+import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
+import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.hardware.hitechnic.HiTechnicNxtColorSensor;
 import com.qualcomm.hardware.matrix.MatrixDcMotorController;
 import com.qualcomm.robotcore.hardware.*;
-import com.qualcomm.robotcore.hardware.TouchSensor;
+//import com.qualcomm.robotcore.hardware.TouchSensor;
 import com.qualcomm.robotcore.util.ElapsedTime;
+import java.util.concurrent.TimeUnit;
 
 import org.firstinspires.ftc.robotcontroller.external.samples.HardwarePushbot;
+
+import static android.R.interpolator.linear;
+import static com.sun.tools.javac.util.LayoutCharacters.LF;
 
 public class HardwareVar
 {
     /* Public OpMode members. */
     private MatrixDcMotorController motorController = null;
     private ServoController         servoController = null;
-
     public DcMotor LFmotor;
     public DcMotor LBmotor;
     public DcMotor RFmotor;
@@ -52,7 +57,7 @@ public class HardwareVar
 //    public Servo legoServo;
 //    public UltrasonicSensor         rangeSensor;
     public HiTechnicNxtColorSensor  colorSensor;
-//    public TouchSensor              touchSensor;
+    public TouchSensor              touchSensor;
     public double LFpower;
     public double LBpower;
     public double RFpower;
@@ -106,4 +111,30 @@ public class HardwareVar
         LBmotor.setPower(power);
         RBmotor.setPower(power);
     }
+
+    public void rotate(int degree) {
+        int constant = 17;
+        int time = constant * degree;
+        LBmotor.setPower(0.2);
+        RBmotor.setPower(0.2);
+        //sleep(time);
+        LFmotor.setPower(0.2);
+        LBmotor.setPower(0.2);
+   }
+
+   public void crab(String direction) {
+       if(direction == "left") {
+           LFmotor.setPower(-0.2);
+           LBmotor.setPower(0.2);
+           RFmotor.setPower(0.2);
+           RBmotor.setPower(-0.2);
+       } else if(direction == "right") {
+           LFmotor.setPower(0.2);
+           LBmotor.setPower(-0.2);
+           RFmotor.setPower(-0.2);
+           RBmotor.setPower(0.2);
+       } else {
+           return;
+       }
+   }
 }

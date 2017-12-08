@@ -4,7 +4,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.util.Range;
 
-@TeleOp(name = "TeleOp Period", group = "Linear Opmode")
+@TeleOp(name = "TeleOp PeriodV2", group = "Linear Opmode")
 public class TeleOpPeriodV2 extends LinearOpMode {
 
     //om HardwareVar class te kunnen gebruiken (gebruik voor elke variabele r.)
@@ -42,15 +42,15 @@ public class TeleOpPeriodV2 extends LinearOpMode {
 
             }
 
-            double turn =  
+           // double turn =
 
             double driveBackward = this.gamepad1.left_trigger;
             double driveForward  = this.gamepad1.right_trigger;
 
-            r.LFpower = Range.clip(driveForward - driveBackward + turn, -1.0, 1.0);
-            r.LBpower = Range.clip(driveForward - driveBackward + turn, -1.0, 1.0);
-            r.RFpower = Range.clip(driveForward - driveBackward - turn, -1.0, 1.0);
-            r.RBpower = Range.clip(driveForward - driveBackward - turn, -1.0, 1.0);
+         //   r.LFpower = Range.clip(driveForward - driveBackward + turn, -1.0, 1.0);
+           // r.LBpower = Range.clip(driveForward - driveBackward + turn, -1.0, 1.0);
+           // r.RFpower = Range.clip(driveForward - driveBackward - turn, -1.0, 1.0);
+           // r.RBpower = Range.clip(driveForward - driveBackward - turn, -1.0, 1.0);
 
             //</editor-fold>
 
