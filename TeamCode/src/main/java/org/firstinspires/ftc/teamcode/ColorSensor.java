@@ -68,13 +68,13 @@ public class ColorSensor extends LinearOpMode {
       // zorg ervoor dat hij bij elke kleur wat leuks doet, bijv. rood -> zeg rood
       // blauw, zeg blauw ofzo. Dit kan allemaal aangepast worden als ze weten wat de kleurensensor in gang moet gaan zetten.
 
-        if(colorSensor.red() > 150 );
+        if(r.colorSensor.red() > 150 );
             //...
 
-        if(colorSensor.green() > 150 );
+        if(r.colorSensor.green() > 150 );
             //...
 
-        if(colorSensor.Blue() > 150);
+        if(r.colorSensor.blue() > 150);
             //...
 
 
