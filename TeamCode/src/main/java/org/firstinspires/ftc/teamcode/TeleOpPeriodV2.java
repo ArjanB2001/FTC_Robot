@@ -4,7 +4,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.util.Range;
 
-@TeleOp(name = "TeleOp Period", group = "Linear Opmode")
+@TeleOp(name = "TeleOpPeriodV2", group = "Linear Opmode")
 public class TeleOpPeriodV2 extends LinearOpMode {
 
     //om HardwareVar class te kunnen gebruiken (gebruik voor elke variabele r.)
@@ -20,37 +20,29 @@ public class TeleOpPeriodV2 extends LinearOpMode {
 
         while(opModeIsActive()){
 
-            //<editor-fold default="folded" desc="Left Right dpad">
+            //<editor-fold default="folded" desc="Forward Backward trigger, Left Right dpad">
+
+            double turn;
+            double Turn;
 
             if(gamepad1.dpad_left==true){
-                double TurnLeft = 0.2;
+                turn = 0.2;
 
-                r.LFpower =  TurnLeft;
-                r.LBpower =  TurnLeft;
-                r.RFpower =  TurnLeft;
-                r.RBpower =  TurnLeft;
-
-            }
+            } else
+                turn = 0.0;
 
             if(gamepad1.dpad_right==true){
-                double TurnRight = -0.2;
-
-                r.LFpower =  TurnRight;
-                r.LBpower =  TurnRight;
-                r.RFpower =  TurnRight;
-                r.RBpower =  TurnRight;
-
-            }
-
-            double turn =  
+                Turn = -0.2;
+            } else
+                Turn = 0.0;
 
             double driveBackward = this.gamepad1.left_trigger;
             double driveForward  = this.gamepad1.right_trigger;
 
-            r.LFpower = Range.clip(driveForward - driveBackward + turn, -1.0, 1.0);
-            r.LBpower = Range.clip(driveForward - driveBackward + turn, -1.0, 1.0);
-            r.RFpower = Range.clip(driveForward - driveBackward - turn, -1.0, 1.0);
-            r.RBpower = Range.clip(driveForward - driveBackward - turn, -1.0, 1.0);
+            r.LFpower = Range.clip(driveForward - driveBackward + turn + Turn, -1.0, 1.0);
+            r.LBpower = Range.clip(driveForward - driveBackward + turn + Turn, -1.0, 1.0);
+            r.RFpower = Range.clip(driveForward - driveBackward - turn - Turn, -1.0, 1.0);
+            r.RBpower = Range.clip(driveForward - driveBackward - turn - Turn, -1.0, 1.0);
 
             //</editor-fold>
 
