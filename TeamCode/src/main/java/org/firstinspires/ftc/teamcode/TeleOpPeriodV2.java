@@ -36,13 +36,13 @@ public class TeleOpPeriodV2 extends LinearOpMode {
             } else
                 Turn = 0.0;
 
-            double driveBackward = this.gamepad1.left_trigger;
-            double driveForward  = this.gamepad1.right_trigger;
+            double driveBackward = -this.gamepad1.left_trigger;
+            double driveForward  = -this.gamepad1.right_trigger;
 
-            r.LFpower = Range.clip(driveForward - driveBackward + turn + Turn, -1.0, 1.0);
-            r.LBpower = Range.clip(driveForward - driveBackward + turn + Turn, -1.0, 1.0);
-            r.RFpower = Range.clip(driveForward - driveBackward - turn - Turn, -1.0, 1.0);
-            r.RBpower = Range.clip(driveForward - driveBackward - turn - Turn, -1.0, 1.0);
+            r.LFpower = Range.clip(driveForward - driveBackward - turn - Turn, -0.6, 0.6);
+            r.LBpower = Range.clip(driveForward - driveBackward - turn - Turn, -0.6, 0.6);
+            r.RFpower = Range.clip(driveForward - driveBackward + turn + Turn, -0.6, 0.6);
+            r.RBpower = Range.clip(driveForward - driveBackward + turn + Turn, -0.6, 0.6);
 
             //</editor-fold>
 

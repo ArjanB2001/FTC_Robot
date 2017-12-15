@@ -29,10 +29,23 @@ public class DelayedAccelerationV7_TeleOpPeriod extends LinearOpMode {
 
             //<editor-fold default="folded" desc="Master Control left_stick">
 
-            r.LFpower = Range.clip(drive + Turn, -0.6, 0.6);
-            r.LBpower = Range.clip(drive + Turn, -0.6, 0.6);
-            r.RFpower = Range.clip(drive - Turn, -0.6, 0.6);
-            r.RBpower = Range.clip(drive - Turn, -0.6, 0.6);
+            while(gamepad1.a==false) {
+                r.LFpower = Range.clip(drive + Turn, -0.6, 0.6);
+                r.LBpower = Range.clip(drive + Turn, -0.6, 0.6);
+                r.RFpower = Range.clip(drive - Turn, -0.6, 0.6);
+                r.RBpower = Range.clip(drive - Turn, -0.6, 0.6);
+
+                //<editor-fold default="folded" desc="Geef motors bepaalde kracht">
+
+                r.LFmotor.setPower(r.LFpower);
+                r.LBmotor.setPower(r.LBpower);
+                r.RFmotor.setPower(r.RFpower);
+                r.RBmotor.setPower(r.RBpower);
+
+                //</editor-fold>
+
+                break;
+            }
 
             //</editor-fold>
 
@@ -45,6 +58,16 @@ public class DelayedAccelerationV7_TeleOpPeriod extends LinearOpMode {
                 r.RFpower = Range.clip(drive - Turn, -1.0, 1.0);
                 r.RBpower = Range.clip(drive - Turn, -1.0, 1.0);
 
+                //<editor-fold default="folded" desc="Geef motors bepaalde kracht">
+
+                r.LFmotor.setPower(r.LFpower);
+                r.LBmotor.setPower(r.LBpower);
+                r.RFmotor.setPower(r.RFpower);
+                r.RBmotor.setPower(r.RBpower);
+
+                //</editor-fold>
+
+                break;
             }
 
             //</editor-fold>
