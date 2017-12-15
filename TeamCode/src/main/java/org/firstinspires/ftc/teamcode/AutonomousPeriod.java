@@ -65,8 +65,9 @@ public class AutonomousPeriod extends LinearOpMode {
             /////
             //colorSensor herkennings shit waar Anouk mee bezig is
             /////
-            r.powerAll(0.2);
-            sleep(500);
+            r.rotate(90);
+            sleep(1538);
+            r.powerAll(0);
         }
     }
 }
