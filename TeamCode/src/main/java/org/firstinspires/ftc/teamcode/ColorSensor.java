@@ -49,7 +49,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
  * Remove or comment out the @Disabled line to add this opmode to the Driver Station OpMode list
  */
 @Autonomous(name = "ColorSensor", group = "Sensor")
-@Disabled
+//@Disabled
 public class ColorSensor extends LinearOpMode {
 
   HardwareVar r = new HardwareVar();
@@ -68,14 +68,18 @@ public class ColorSensor extends LinearOpMode {
       // zorg ervoor dat hij bij elke kleur wat leuks doet, bijv. rood -> zeg rood
       // blauw, zeg blauw ofzo. Dit kan allemaal aangepast worden als ze weten wat de kleurensensor in gang moet gaan zetten.
 
-        if(r.colorSensor.red() > 150 );
-            //...
+        if(r.colorSensor.red() > r.colorSensor.blue() && r.colorSensor.red() >= 5) {
+            telemetry.addData("kleur:", "Waarschijnlijk rood");
 
-        if(r.colorSensor.green() > 150 );
-            //...
+        }
 
-        if(r.colorSensor.blue() > 150);
-            //...
+
+        if(r.colorSensor.blue() > r.colorSensor.red() && r.colorSensor.blue() >= 5 ) {
+            telemetry.addData("kleur:", "Waarschijnlijk blauw");
+
+        }
+
+
 
 
       telemetry.addData("Clear", r.colorSensor.alpha());

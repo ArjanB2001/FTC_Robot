@@ -116,10 +116,10 @@ public class HardwareVar
         int constant = 17;
         int time = constant * degree;
         LBmotor.setPower(0.2);
-        RBmotor.setPower(0.2);
+        RBmotor.setPower(-0.2);
         //sleep(time);
-        LFmotor.setPower(0.2);
-        LBmotor.setPower(0.2);
+        //LFmotor.setPower(0.2);
+        //LBmotor.setPower(0.2);
    }
 
    public void crab(String direction) {
