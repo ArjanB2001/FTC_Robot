@@ -27,50 +27,20 @@ public class DelayedAccelerationV7_TeleOpPeriod extends LinearOpMode {
 
         while(opModeIsActive()){
 
-            //<editor-fold default="folded" desc="Master Control left_stick">
+            if(gamepad1.a==false){
+                r.LFpower = Range.clip(drive + Turn, -0.2, 0.2);
+                r.LBpower = Range.clip(drive + Turn, -0.2, 0.2);
+                r.RFpower = Range.clip(drive - Turn, -0.2, 0.2);
+                r.RBpower = Range.clip(drive - Turn, -0.2, 0.2);
 
-            while(gamepad1.a==false) {
-                r.LFpower = Range.clip(drive + Turn, -0.6, 0.6);
-                r.LBpower = Range.clip(drive + Turn, -0.6, 0.6);
-                r.RFpower = Range.clip(drive - Turn, -0.6, 0.6);
-                r.RBpower = Range.clip(drive - Turn, -0.6, 0.6);
-
-                //<editor-fold default="folded" desc="Geef motors bepaalde kracht">
-
-                r.LFmotor.setPower(r.LFpower);
-                r.LBmotor.setPower(r.LBpower);
-                r.RFmotor.setPower(r.RFpower);
-                r.RBmotor.setPower(r.RBpower);
-
-                //</editor-fold>
-
-                break;
-            }
-
-            //</editor-fold>
-
-            //<editor-fold default="folded" desc="Master Control left_stick (Sprinting)">
-
-            while(gamepad1.a==true) {
-
+            }else if(gamepad1.a==true){
                 r.LFpower = Range.clip(drive + Turn, -1.0, 1.0);
                 r.LBpower = Range.clip(drive + Turn, -1.0, 1.0);
                 r.RFpower = Range.clip(drive - Turn, -1.0, 1.0);
                 r.RBpower = Range.clip(drive - Turn, -1.0, 1.0);
-
-                //<editor-fold default="folded" desc="Geef motors bepaalde kracht">
-
-                r.LFmotor.setPower(r.LFpower);
-                r.LBmotor.setPower(r.LBpower);
-                r.RFmotor.setPower(r.RFpower);
-                r.RBmotor.setPower(r.RBpower);
-
-                //</editor-fold>
-
-                break;
-            }
-
-            //</editor-fold>
+            }else
+                telemetry.addData("Motor status", "not running");
+                telemetry.update();
 
             //<editor-fold default="folded" desc="Crab Movement left&right_trigger">
 
