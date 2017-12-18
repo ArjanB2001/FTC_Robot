@@ -68,6 +68,7 @@ public class AutonomousPeriod extends LinearOpMode {
             r.rotate(90);
             sleep(1538);
             r.powerAll(0);
+            break;
         }
     }
 }
