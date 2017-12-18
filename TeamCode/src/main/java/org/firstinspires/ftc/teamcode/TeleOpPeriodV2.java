@@ -26,8 +26,8 @@ public class TeleOpPeriodV2 extends LinearOpMode {
 
             double turnL;                                   //turn left
             double turnR;                                   //turn right
-            double driveB = -this.gamepad1.left_trigger;    //drive backward
-            double driveF = -this.gamepad1.right_trigger;   //drive forward
+            double driveB = this.gamepad1.left_trigger;    //drive backward
+            double driveF = this.gamepad1.right_trigger;   //drive forward
             double S;                                       //factor sprint
 
             if(gamepad1.dpad_left==true){
@@ -38,15 +38,19 @@ public class TeleOpPeriodV2 extends LinearOpMode {
 
             if(gamepad1.dpad_right==true){
                 turnR = -0.2;
-            } else
+            } else {
                 turnR = 0.0;
+            }
 
             if(gamepad1.a==true){
-                S = 10;
-            } else
+                S = 5;
+                telemetry.addData("Motor status", "sprinting");
+            } else {
                 S = 1;
+                telemetry.addData("Motor status", "slow");
+            }   telemetry.update();
 
-            double drive    = Range.clip(driveB + driveF, -0.1, 0.1);
+            double drive    = Range.clip(driveF - driveB, -0.2, 0.2);
             double turn     = Range.clip(turnL + turnR, -0.2, 0.2);
             double factor   = S;
 
@@ -54,7 +58,6 @@ public class TeleOpPeriodV2 extends LinearOpMode {
             r.LBpower = Range.clip(drive * factor - turn, -1.0, 1.0);
             r.RFpower = Range.clip(drive * factor + turn, -1.0, 1.0);
             r.RBpower = Range.clip(drive * factor + turn, -1.0, 1.0);
-
 
             //</editor-fold>, , ,
 
