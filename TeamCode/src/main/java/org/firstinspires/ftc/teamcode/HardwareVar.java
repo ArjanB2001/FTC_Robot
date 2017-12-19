@@ -104,7 +104,7 @@ public class HardwareVar
 //        servoController.pwmEnable();       // Don't forget to enable Matrix Output
     }
 
-
+    //Een method die alle motoren dezelfde power geeft
     public void powerAll(double power) {
         LFmotor.setPower(power);
         RFmotor.setPower(power);
@@ -112,17 +112,20 @@ public class HardwareVar
         RBmotor.setPower(power);
     }
 
+// Een method die de robot een bepaald aantal graden laat draaien, werkt nog niet.
     public void rotate(int degree) {
         int constant = 17;
         int time = constant * degree;
         LBmotor.setPower(0.2);
-        RBmotor.setPower(-0.2);
+        RBmotor.setPower(0.2);
         //sleep(time);
         //LFmotor.setPower(0.2);
         //LBmotor.setPower(0.2);
    }
 
-   public void crab(String direction) {
+
+    //"Crab" method, moet nog worden getest met nieuwe wielen.
+    public void crab(String direction) {
        if(direction == "left") {
            LFmotor.setPower(-0.2);
            LBmotor.setPower(0.2);
