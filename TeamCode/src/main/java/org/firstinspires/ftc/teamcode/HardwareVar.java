@@ -33,6 +33,8 @@ import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.hardware.hitechnic.HiTechnicNxtColorSensor;
 import com.qualcomm.hardware.matrix.MatrixDcMotorController;
+import com.qualcomm.robotcore.hardware.Servo;
+import com.qualcomm.robotcore.hardware.ServoController;
 import com.qualcomm.robotcore.hardware.*;
 //import com.qualcomm.robotcore.hardware.TouchSensor;
 import com.qualcomm.robotcore.util.ElapsedTime;
@@ -52,8 +54,8 @@ public class HardwareVar
     public DcMotor LBmotor;
     public DcMotor RFmotor;
     public DcMotor RBmotor;
-//    public Servo servo1;
-//    public Servo servo2;
+    public Servo servo1;
+    public Servo servo2;
 //    public Servo legoServo;
 //    public UltrasonicSensor         rangeSensor;
     public HiTechnicNxtColorSensor  colorSensor;
@@ -91,8 +93,8 @@ public class HardwareVar
         RBmotor.setDirection(DcMotor.Direction.FORWARD);
 
 //        //Servo's
-//        servo1 = ahwMap.get(Servo.class, "servo1");
-//        servo2 = ahwMap.get(Servo.class, "servo2");
+        servo1 = ahwMap.get(Servo.class, "servo1");
+        servo2 = ahwMap.get(Servo.class, "servo2");
 //        legoServo = ahwMap.get(Servo.class, "legoServo");
 //
 //        //Sensoren
@@ -101,7 +103,7 @@ public class HardwareVar
 //        touchSensor = ahwMap.get(TouchSensor.class, "touchSensor");
 //
 //        // Enable Servos
-//        servoController.pwmEnable();       // Don't forget to enable Matrix Output
+        servoController.pwmEnable();       // Don't forget to enable Matrix Output
     }
 
     //Een method die alle motoren dezelfde power geeft
@@ -139,5 +141,11 @@ public class HardwareVar
        } else {
            return;
        }
+   }
+
+   public void neutral() {
+       servo1.setPosition(0);
+       servo2.setPosition(0);
+
    }
 }

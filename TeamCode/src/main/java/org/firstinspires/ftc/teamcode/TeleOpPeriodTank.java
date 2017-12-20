@@ -4,8 +4,8 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.util.Range;
 
-@TeleOp(name = "TeleOpModeArjan", group = "Linear Opmode")
-public class TeleOpPeriodArjan extends LinearOpMode {
+@TeleOp(name = "TeleOpModeTank", group = "Linear Opmode")
+public class TeleOpPeriodTank extends LinearOpMode {
 
     //om HardwareVar class te kunnen gebruiken (gebruik voor elke variabele r.)
     HardwareVar r = new HardwareVar();

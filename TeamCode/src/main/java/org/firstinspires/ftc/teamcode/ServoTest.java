@@ -54,30 +54,41 @@ import com.qualcomm.robotcore.util.Range;
  * Remove or comment out the @Disabled line to add this opmode to the Driver Station OpMode list
  */
 
-@Autonomous(name="Servo Test", group="Linear Opmode")
+@TeleOp(name="Servo Test", group="Linear Opmode")
 //@Disabled
 public class ServoTest extends LinearOpMode {
 
-    HardwareVar rb = new HardwareVar();
+    HardwareVar r = new HardwareVar();
 
     @Override
     public void runOpMode() {
+        //run init() in
+        r.init(hardwareMap);
+        r.neutral();
         telemetry.addData("Status", "Initialized");
         telemetry.update();
 
-        rb.init(hardwareMap);
-
-
-        // Wait for the game to start (driver presses PLAY)
-        //gnfldskj
         waitForStart();
-        rb.runtime.reset();
 
-       //servo1.setPosition(0.1);
-        //servo2.setPosition(0.1);
-        // run until the end of the match (driver presses STOP)
         while (opModeIsActive()) {
+            if(gamepad1.x) {
+                r.servo1.setPosition(0);
+            } else if (gamepad1.y) {
+                r.servo1.setPosition(1);
+            } else if (gamepad1.a) {
+                r.servo1.setPosition(2);
+            }
+            else if(gamepad1.b){
+                r.servo1.setPosition(0.5);
 
+            } else {
+                telemetry.addData("Servo", r.servo1.getPosition());
+            }
+
+            telemetry.addData("Controls", "Druk op X voor 0 en Y voor 1 en A voor 2");
+            telemetry.update();
         }
+
+
     }
 }
