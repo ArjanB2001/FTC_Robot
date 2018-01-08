@@ -32,12 +32,12 @@ public class TeleOpPeriodV2 extends LinearOpMode {
             double S;                                       //factor sprint
 
             if(gamepad1.dpad_left==true){
-                turnL = 0.4;
+                turnL = 0.2;
             } else
                 turnL = 0.0;
 
             if(gamepad1.dpad_right==true){
-                turnR = -0.4;
+                turnR = -0.2;
             } else {
                 turnR = 0.0;
             }
@@ -52,12 +52,12 @@ public class TeleOpPeriodV2 extends LinearOpMode {
             double turn     = Range.clip(turnL + turnR, -0.2, 0.2);
             double factor   = S;
 
-            if(drive>0) {
-                r.LFpower = Range.clip(drive * factor - turn, -1.0, 1.0);
-                r.LBpower = Range.clip(drive * factor - turn, -1.0, 1.0);
-                r.RFpower = Range.clip(drive * factor + turn, -1.0, 1.0);
-                r.RBpower = Range.clip(drive * factor + turn, -1.0, 1.0);
-            } else if(drive<0){
+            if(drive<0) {
+                r.LFpower = Range.clip(drive * factor + turn, -1.0, 1.0);
+                r.LBpower = Range.clip(drive * factor + turn, -1.0, 1.0);
+                r.RFpower = Range.clip(drive * factor - turn, -1.0, 1.0);
+                r.RBpower = Range.clip(drive * factor - turn, -1.0, 1.0);
+            } else{
                 r.LFpower = Range.clip(drive * factor + turn, -1.0, 1.0);
                 r.LBpower = Range.clip(drive * factor + turn, -1.0, 1.0);
                 r.RFpower = Range.clip(drive * factor - turn, -1.0, 1.0);
