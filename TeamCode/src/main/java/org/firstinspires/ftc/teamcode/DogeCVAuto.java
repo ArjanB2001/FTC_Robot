@@ -90,7 +90,7 @@ public class DogeCVAuto extends LinearOpMode {
             } else {
                 telemetry.addData("Status", "IK WEET HET NIET MEER");
             }
-
+//hoi
             telemetry.addData("Status", "Run Time: " + runtime);
             telemetry.addData("Glyph Pos offset", glyphDetector.getChosenGlyphOffset());
             telemetry.addData("Glyph Pos X, Y", glyphDetector.getChosenGlyphPosition());
