@@ -75,14 +75,14 @@ public class DogeCVAuto extends LinearOpMode {
         // run until the end of the match (driver presses STOP)
         while (opModeIsActive()) {
             if (glyphDetector.getChosenGlyphOffset() < 110) {
-                r.RBmotor.setPower(0.2);
-                r.LBmotor.setPower(-0.2);
+                r.RBmotor.setPower(-0.2);
+                r.LBmotor.setPower(0.2);
                 sleep(500);
                 r.powerAll(0);
 
             } else if (glyphDetector.getChosenGlyphOffset() > 150) {
-                r.LBmotor.setPower(0.2);
-                r.RBmotor.setPower(-0.2);
+                r.LBmotor.setPower(-0.2);
+                r.RBmotor.setPower(0.2);
                 sleep(500);
                 r.powerAll(0);
             } else if (glyphDetector.getChosenGlyphOffset() > 110 & glyphDetector.getChosenGlyphOffset() < 150) {
@@ -91,7 +91,6 @@ public class DogeCVAuto extends LinearOpMode {
                 telemetry.addData("Status", "IK WEET HET NIET MEER");
             }
 //hoi
-            //hnjk
             telemetry.addData("Status", "Run Time: " + runtime);
             telemetry.addData("Glyph Pos offset", glyphDetector.getChosenGlyphOffset());
             telemetry.addData("Glyph Pos X, Y", glyphDetector.getChosenGlyphPosition());
