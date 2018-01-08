@@ -82,10 +82,10 @@ public class HardwareVar
         servoController = ahwMap.get(ServoController.class, "matrixController");
 
         //Motoren
-        RBmotor = ahwMap.get(DcMotor.class, "RBmotor");
-        RFmotor = ahwMap.get(DcMotor.class, "RFmotor");
-        LBmotor = ahwMap.get(DcMotor.class, "LBmotor");
         LFmotor = ahwMap.get(DcMotor.class, "LFmotor");
+        LBmotor = ahwMap.get(DcMotor.class, "LBmotor");
+        RFmotor = ahwMap.get(DcMotor.class, "RFmotor");
+        RBmotor = ahwMap.get(DcMotor.class, "RBmotor");
 
         LFmotor.setDirection(DcMotor.Direction.REVERSE);
         LBmotor.setDirection(DcMotor.Direction.REVERSE);
