@@ -58,6 +58,7 @@ public class DogeCVAuto extends LinearOpMode {
     HardwareVar r = new HardwareVar();
     private GlyphDetector glyphDetector = null;
     private ElapsedTime runtime = new ElapsedTime();
+    public Boolean AllowedTurn;
 
     @Override
     public void runOpMode() {
@@ -74,21 +75,25 @@ public class DogeCVAuto extends LinearOpMode {
 
         // run until the end of the match (driver presses STOP)
         while (opModeIsActive()) {
-            if (glyphDetector.getChosenGlyphOffset() < 110) {
+            if (glyphDetector.getChosenGlyphOffset() < 110 && AllowedTurn) {
                 r.RBmotor.setPower(-0.2);
                 r.LBmotor.setPower(0.2);
                 sleep(500);
                 r.powerAll(0);
+                AllowedTurn = false;
 
-            } else if (glyphDetector.getChosenGlyphOffset() > 150) {
+            } else if (glyphDetector.getChosenGlyphOffset() > 150 && AllowedTurn) {
                 r.LBmotor.setPower(-0.2);
                 r.RBmotor.setPower(0.2);
                 sleep(500);
                 r.powerAll(0);
+                AllowedTurn = false;
             } else if (glyphDetector.getChosenGlyphOffset() > 110 & glyphDetector.getChosenGlyphOffset() < 150) {
                 telemetry.addData("Status", "MIDDEN");
+                AllowedTurn = true;
             } else {
                 telemetry.addData("Status", "IK WEET HET NIET MEER");
+                AllowedTurn = true;
             }
 //hoi
             telemetry.addData("Status", "Run Time: " + runtime);

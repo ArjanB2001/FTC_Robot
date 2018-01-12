@@ -62,9 +62,29 @@ public class AutonomousPeriod extends LinearOpMode {
 
         // run until the end of the match (driver presses STOP)
         while (opModeIsActive()) {
-            /////
-            //colorSensor herkennings shit waar Anouk mee bezig is
-            /////
+
+            if(r.colorSensor.red() > r.colorSensor.blue() && r.colorSensor.red() >= 5) {
+                telemetry.addData("kleur:", "Waarschijnlijk rood");
+
+            }
+
+
+            if(r.colorSensor.blue() > r.colorSensor.red() && r.colorSensor.blue() >= 5 ) {
+                telemetry.addData("kleur:", "Waarschijnlijk blauw");
+
+            }
+
+
+
+
+            telemetry.addData("Clear", r.colorSensor.alpha());
+            telemetry.addData("Red  ", r.colorSensor.red());
+            telemetry.addData("Green", r.colorSensor.green());
+            telemetry.addData("Blue ", r.colorSensor.blue());
+
+
+            telemetry.update();
+
             r.rotate(90);
             sleep(1538);
             r.powerAll(0);
