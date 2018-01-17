@@ -85,6 +85,7 @@ public class ServoTest extends LinearOpMode {
                 r.servo1.setPosition(0.5);
                 telemetry.addData("Status", "0.5");
 
+
             } else {
                 telemetry.addData("Servo", r.servo1.getPosition());
             }
