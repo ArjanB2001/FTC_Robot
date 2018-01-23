@@ -87,7 +87,7 @@ public class HardwareVar
         RFmotor = ahwMap.get(DcMotor.class, "RFmotor");
         RBmotor = ahwMap.get(DcMotor.class, "RBmotor");
 
-        LFmotor.setDirection(DcMotor.Direction.REVERSE);
+        LFmotor.setDirection(DcMotor.Direction.FORWARD);
         LBmotor.setDirection(DcMotor.Direction.REVERSE);
         RFmotor.setDirection(DcMotor.Direction.FORWARD);
         RBmotor.setDirection(DcMotor.Direction.FORWARD);

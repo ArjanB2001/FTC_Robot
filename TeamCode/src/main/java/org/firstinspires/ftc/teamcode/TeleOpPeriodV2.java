@@ -12,6 +12,7 @@ public class TeleOpPeriodV2 extends LinearOpMode {
 
     //om HardwareVar class te kunnen gebruiken (gebruik voor elke variabele r.)
     HardwareVar r = new HardwareVar();
+    double degree;
 
     public void runOpMode(){
         //r. runt HardwareVar class
@@ -30,7 +31,6 @@ public class TeleOpPeriodV2 extends LinearOpMode {
             double driveB = this.gamepad1.left_trigger;     //drive backward
             double driveF = this.gamepad1.right_trigger;    //drive forward
             double S;                                       //factor sprint
-
             if(gamepad1.dpad_left==true){
                 turnL = 0.2;
             } else
@@ -66,46 +66,26 @@ public class TeleOpPeriodV2 extends LinearOpMode {
 
             //</editor-fold>
 
-            //<editor-fold default="folded" desc="Crab Movement right_stick">
-
-            if(gamepad1.right_stick_y>0){
-                r.LFpower = -gamepad1.right_stick_y;
-                r.LBpower =  gamepad1.right_stick_y;
-                r.RFpower = -gamepad1.right_stick_y;
-                r.RBpower =  gamepad1.right_stick_y;
-
-            }
-
-            if(gamepad1.right_stick_y<0){
-                r.LFpower =  gamepad1.right_stick_y;
-                r.LBpower = -gamepad1.right_stick_y;
-                r.RFpower =  gamepad1.right_stick_y;
-                r.RBpower = -gamepad1.right_stick_y;
-
-            }
-
-            //</editor-fold>
-/*
             //<editor-fold default="folded" desc="Crab Movement bumper">
 
             if(gamepad1.left_bumper==true){
-                r.LFpower = -1;
-                r.LBpower =  1;
-                r.RFpower = -1;
-                r.RBpower =  1;
+                r.LFpower = 0.3;
+                r.LBpower =  -0.3;
+                r.RFpower = -0.3;
+                r.RBpower =  0.3;
 
             }
 
             if(gamepad1.right_bumper==true){
-                r.LFpower =  1;
-                r.LBpower = -1;
-                r.RFpower =  1;
-                r.RBpower = -1;
+                r.LFpower =  -0.3;
+                r.LBpower = 0.3;
+                r.RFpower =  0.3;
+                r.RBpower = -0.3;
 
             }
 
             //</editor-fold>
-*/
+
             //<editor-fold default="folded" desc="Set Motor Power">
 
             r.LFmotor.setPower(r.LFpower);
@@ -115,10 +95,18 @@ public class TeleOpPeriodV2 extends LinearOpMode {
 
             //</editor-fold>
 
+            degree = Range.clip(gamepad1.right_stick_x, 0  , 1.0) ;
+
+            if(gamepad1.a) {
+                r.servo1.setPosition(degree);
+            }
+
             telemetry.addData("rotation LFmotor", r.LFmotor.getPower());
             telemetry.addData("rotation LBmotor", r.LBmotor.getPower());
             telemetry.addData("rotation RFmotor", r.RFmotor.getPower());
             telemetry.addData("rotation RBmotor", r.RBmotor.getPower());
+            telemetry.addData("Degree", degree);
+            telemetry.addData("ServoPos", r.servo1.getPosition());
             telemetry.update();
 
 
