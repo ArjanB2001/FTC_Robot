@@ -125,6 +125,20 @@ public class HardwareVar
         //LBmotor.setPower(0.2);
    }
 
+   public void left(double power) {
+       LFmotor.setPower(-power);
+       LBmotor.setPower(-power);
+       RBmotor.setPower(power);
+       RFmotor.setPower(power);
+   }
+
+    public void right(double power) {
+        LFmotor.setPower(power);
+        LBmotor.setPower(power);
+        RBmotor.setPower(-power);
+        RFmotor.setPower(-power);
+    }
+
 
     //"Crab" method, moet nog worden getest met nieuwe wielen.
     public void crab(String direction) {

@@ -35,8 +35,8 @@ public class TeleOpPeriodV5 extends LinearOpMode {
             r.RBmotor.setPower(v4);
 
             if(gamepad1.a) {
-                r.servo1.setPosition(0.4);
-                telemetry.addData("Servo:", "0.4");
+                r.servo1.setPosition(0.75);
+                telemetry.addData("Servo:", "0.75");
             }
 
             if(gamepad1.y) {
@@ -50,8 +50,14 @@ public class TeleOpPeriodV5 extends LinearOpMode {
             }
 
             if(gamepad1.x) {
-                r.servo1.setPosition(0.6);
-                telemetry.addData("Servo:", "0.6");
+                r.servo1.setPosition(0.7);
+                telemetry.addData("Servo:", "0.7");
+            }
+
+            degree = gamepad1.right_trigger;
+            if (degree > 0) {
+                r.servo1.setPosition(degree);
+                telemetry.addData("Servo", r.servo1.getPosition());
             }
 
 
