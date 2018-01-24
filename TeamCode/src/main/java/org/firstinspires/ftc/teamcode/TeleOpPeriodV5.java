@@ -43,7 +43,7 @@ public class TeleOpPeriodV5 extends LinearOpMode {
                 r.servo1.setPosition(0);
                 telemetry.addData("Servo:", "0");
             }
-
+//
             if(gamepad1.b) {
                 r.servo1.setPosition(1);
                 telemetry.addData("Servo:", "1");
