@@ -62,13 +62,14 @@ public class AutonomousPeriod extends LinearOpMode {
 
         // run until the end of the match (driver presses STOP)
         while (opModeIsActive()) {
+            sleep(2000);
 
             if(r.colorSensor.red() > r.colorSensor.blue() && r.colorSensor.red() >= 5 && !tried) {
                 r.powerAll(0.2);
-                sleep(200);
+                sleep(900);
                 r.powerAll(0);
                 r.left(0.5);
-                sleep(300);
+                sleep(600);
                 tried = true;
                 telemetry.addData("kleur", "Waarschijnlijk rood");
                 telemetry.update();
@@ -76,10 +77,10 @@ public class AutonomousPeriod extends LinearOpMode {
             } else if(r.colorSensor.blue() > r.colorSensor.red() && r.colorSensor.blue() >= 5 && !tried ) {
                 telemetry.addData("kleur:", "Waarschijnlijk blauw");
                 r.powerAll(0.2);
-                sleep(200);
+                sleep(900);
                 r.powerAll(0);
                 r.right(0.5);
-                sleep(300);
+                sleep(600);
                 tried = true;
                 telemetry.addData("kleur", "Waarschijnlijk rood");
                 telemetry.update();

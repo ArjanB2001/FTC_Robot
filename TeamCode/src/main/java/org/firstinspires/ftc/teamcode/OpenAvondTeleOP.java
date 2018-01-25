@@ -10,7 +10,7 @@ public class OpenAvondTeleOP extends LinearOpMode {
 
     HardwareVar r = new HardwareVar(); //Importeer motoren en servo's
     double degree;
-    double drive;
+    double snelheid;
 
     public void runOpMode(){
         //r. runt HardwareVar class
@@ -21,34 +21,34 @@ public class OpenAvondTeleOP extends LinearOpMode {
         waitForStart(); //wacht tot play ingedrukt wordt
 
         while(opModeIsActive()){
-            drive    = Range.clip(gamepad1.right_trigger - gamepad1.left_trigger, -0.3, 0.3); //pak de waardes van de triggers van de gamepad
+            snelheid    = Range.clip(gamepad1.right_trigger - gamepad1.left_trigger, -0.3, 0.3); //pak de waardes van de triggers van de gamepad
 
-            if (drive > 0 && !gamepad1.dpad_right && !gamepad1.dpad_left) { //als deze knopjes worden ingedrukt
-                r.LFpower = drive;
-                r.LBpower = drive;   //Zet power naar Drive
-                r.RFpower = drive;
-                r.RBpower = drive;
-            } else if (drive < 0) {
-                r.LFpower = drive;
-                r.LBpower = drive;
-                r.RFpower = drive;
-                r.RBpower = drive;
-            } else if (drive == 0 ) {
-                r.LFpower = drive;
-                r.LBpower = drive;
-                r.RFpower = drive;
-                r.RBpower = drive;
+            if (snelheid > 0 && !gamepad1.dpad_right && !gamepad1.dpad_left) { //als deze knopjes worden ingedrukt
+                r.LFpower = snelheid;
+                r.LBpower = snelheid;   //Zet power naar Drive
+                r.RFpower = snelheid;
+                r.RBpower = snelheid;
+            } else if (snelheid < 0) {
+                r.LFpower = snelheid;
+                r.LBpower = snelheid;
+                r.RFpower = snelheid;
+                r.RBpower = snelheid;
+            } else if (snelheid == 0 ) {
+                r.LFpower = snelheid;
+                r.LBpower = snelheid;
+                r.RFpower = snelheid;
+                r.RBpower = snelheid;
             }
 
 
-            if (gamepad1.dpad_left && drive == 0) {
+            if (gamepad1.dpad_left && snelheid == 0) {
                 r.LFpower = -0.8;
                 r.LBpower = -0.8;
                 r.RBpower =  0.8;        //Naar links draaien om z'n as
                 r.RFpower =  0.8;
             }
 
-            if (gamepad1.dpad_right && drive == 0) {
+            if (gamepad1.dpad_right && snelheid == 0) {
                 r.LFpower =  0.8;
                 r.LBpower =  0.8;        // Naar rechts draaien om z'n as
                 r.RBpower =  -0.8;
@@ -56,14 +56,14 @@ public class OpenAvondTeleOP extends LinearOpMode {
                 ;
             }
 
-            if (gamepad1.dpad_left && drive > 0) {
+            if (gamepad1.dpad_left && snelheid > 0) {
                 r.LFpower = 0;
                 r.LBpower = 0;
                 r.RFpower = 1;              //Naar links draaien
                 r.RBpower = 1;
             }
 
-            if (gamepad1.dpad_right && drive > 0) {
+            if (gamepad1.dpad_right && snelheid > 0) {
                 r.LFpower = 1;
                 r.LBpower = 1;
                 r.RFpower = 0;              //Naar rechts draaien
@@ -119,7 +119,6 @@ public class OpenAvondTeleOP extends LinearOpMode {
             telemetry.addData("rotation LBmotor", r.LBmotor.getPower());
             telemetry.addData("rotation RFmotor", r.RFmotor.getPower());   //Informatie op Driver Station
             telemetry.addData("rotation RBmotor", r.RBmotor.getPower());
-            telemetry.addData("Degree", degree);
             telemetry.addData("ServoPos", r.servo1.getPosition());
             telemetry.update();
 
