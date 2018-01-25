@@ -4,6 +4,12 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.util.Range;
 
+import android.content.Context;
+import android.media.AudioManager;
+import android.media.MediaPlayer;
+
+import static android.R.attr.src;
+
 @TeleOp(name = "TeleOpPeriodV5 ", group = "Linear Opmode")//
 public class TeleOpPeriodV5 extends LinearOpMode {
 

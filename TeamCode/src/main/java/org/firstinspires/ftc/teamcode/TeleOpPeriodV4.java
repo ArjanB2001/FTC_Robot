@@ -42,30 +42,30 @@ public class TeleOpPeriodV4 extends LinearOpMode {
 
 
             if (gamepad1.dpad_left && drive == 0) {
-                r.LFpower = -0.8;
-                r.LBpower = -0.8;
-                r.RBpower =  0.8;
-                r.RFpower =  0.8;
+                r.LFpower = -0.6;
+                r.LBpower = -0.6;
+                r.RBpower =  0.6;
+                r.RFpower =  0.6;
             }
 
             if (gamepad1.dpad_right && drive == 0) {
-                r.LFpower =  0.8;
-                r.LBpower =  0.8;
-                r.RBpower =  -0.8;
-                r.RFpower =  -0.8;
+                r.LFpower =  0.6;
+                r.LBpower =  0.6;
+                r.RBpower =  -0.6;
+                r.RFpower =  -0.6;
                 ;
             }
 
             if (gamepad1.dpad_left && drive > 0) {
                 r.LFpower = 0;
                 r.LBpower = 0;
-                r.RFpower = 1;
-                r.RBpower = 1;
+                r.RFpower = 0.9;
+                r.RBpower = 0.9;
             }
 
             if (gamepad1.dpad_right && drive > 0) {
-                r.LFpower = 1;
-                r.LBpower = 1;
+                r.LFpower = 0.9;
+                r.LBpower = 0.9;
                 r.RFpower = 0;
                 r.RBpower = 0;
             }
@@ -73,15 +73,15 @@ public class TeleOpPeriodV4 extends LinearOpMode {
             if (gamepad1.left_bumper) {
                 r.LFpower = 1;
                 r.LBpower =  -1;
-                r.RFpower = -0.9;
-                r.RBpower =  0.9;
+                r.RFpower = -1;
+                r.RBpower =  1;
             }
 
             if(gamepad1.right_bumper==true){
                 r.LFpower =  -1;
                 r.LBpower =   1;
-                r.RFpower =  0.9;
-                r.RBpower = -0.9;
+                r.RFpower =  1;
+                r.RBpower = -1 ;
 
             }
 

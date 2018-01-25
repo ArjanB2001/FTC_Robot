@@ -57,21 +57,35 @@ public class AutonomousPeriod extends LinearOpMode {
     @Override
     public void runOpMode() {
         r.init(hardwareMap);
-
+        Boolean tried= false;
         waitForStart();
 
         // run until the end of the match (driver presses STOP)
         while (opModeIsActive()) {
 
-            if(r.colorSensor.red() > r.colorSensor.blue() && r.colorSensor.red() >= 5) {
-                telemetry.addData("kleur:", "Waarschijnlijk rood");
+            if(r.colorSensor.red() > r.colorSensor.blue() && r.colorSensor.red() >= 5 && !tried) {
+                r.powerAll(0.2);
+                sleep(200);
+                r.powerAll(0);
+                r.left(0.5);
+                sleep(300);
+                tried = true;
+                telemetry.addData("kleur", "Waarschijnlijk rood");
+                telemetry.update();
 
-            }
-
-
-            if(r.colorSensor.blue() > r.colorSensor.red() && r.colorSensor.blue() >= 5 ) {
+            } else if(r.colorSensor.blue() > r.colorSensor.red() && r.colorSensor.blue() >= 5 && !tried ) {
                 telemetry.addData("kleur:", "Waarschijnlijk blauw");
+                r.powerAll(0.2);
+                sleep(200);
+                r.powerAll(0);
+                r.right(0.5);
+                sleep(300);
+                tried = true;
+                telemetry.addData("kleur", "Waarschijnlijk rood");
+                telemetry.update();
 
+            } else {
+                telemetry.addData("Kleur", " Ik weet het niet meer");
             }
 
 
@@ -84,10 +98,6 @@ public class AutonomousPeriod extends LinearOpMode {
 
 
             telemetry.update();
-
-            r.rotate(90);
-            sleep(1538);
-            r.powerAll(0);
             break;
         }
     }

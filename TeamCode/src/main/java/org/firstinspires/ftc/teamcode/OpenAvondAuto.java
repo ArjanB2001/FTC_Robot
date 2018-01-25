@@ -22,7 +22,7 @@ public class OpenAvondAuto extends LinearOpMode {
 
         while(opModeIsActive()){
 
-            r.powerAll(1);  // Zet alle motoren op 1
+            r.powerAll(0.2);  // Zet alle motoren op 1
 
             sleep(2000);    // Wacht 2 seconden
 
@@ -30,11 +30,11 @@ public class OpenAvondAuto extends LinearOpMode {
 
             sleep(200);     // Wacht 0.2 seconden
 
-            r.left(0.3);    // Draaien op 0.3 power naar links
+            r.left(1);    // Draaien op 0.3 power naar links
 
             sleep(500);     // Wacht 0.5 seconden
 
-            r.right(0.3);   // Draai 0.3 power naar rechts
+            r.right(1);   // Draai 0.3 power naar rechts
 
               sleep(500);     // wacht 0.5 seconden
 
