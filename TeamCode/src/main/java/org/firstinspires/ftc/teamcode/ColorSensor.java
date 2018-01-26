@@ -79,9 +79,6 @@ public class ColorSensor extends LinearOpMode {
 
         }
 
-
-
-
       telemetry.addData("Clear", r.colorSensor.alpha());
       telemetry.addData("Red  ", r.colorSensor.red());
       telemetry.addData("Green", r.colorSensor.green());
