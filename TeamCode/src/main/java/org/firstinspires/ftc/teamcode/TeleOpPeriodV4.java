@@ -106,7 +106,7 @@ public class TeleOpPeriodV4 extends LinearOpMode {
                 telemetry.addData("Servo:", "1");
             }
 
-            if(gamepad1.x) {
+            if(gamepad1.x && !gamepad1.dpad_left && !gamepad1.dpad_right) {
                 r.servo1.setPosition(0.7);
                 telemetry.addData("Servo:", "0.7");
             }
@@ -115,6 +115,14 @@ public class TeleOpPeriodV4 extends LinearOpMode {
                 r.servo1.setPosition(0.6);
                 telemetry.addData("Servo:", "0.6");
             }
+
+            if(gamepad1.x && gamepad1.dpad_left) {
+                r.servo2.setPosition(0);
+            }
+
+            if(gamepad1.x && gamepad1.dpad_right) {
+                r.servo2.setPosition(1);
+            } 
 
 
             telemetry.addData("rotation LFmotor", r.LFmotor.getPower());

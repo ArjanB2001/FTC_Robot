@@ -52,7 +52,7 @@ public class TeleOpPeriodV5 extends LinearOpMode {
                 telemetry.addData("Servo:", "1");
             }
 
-            if(gamepad1.x) {
+            if(gamepad1.x && !gamepad1.dpad_left && !gamepad1.dpad_right) {
                 r.servo1.setPosition(0.7);
                 telemetry.addData("Servo:", "0.7");
             }
@@ -66,6 +66,14 @@ public class TeleOpPeriodV5 extends LinearOpMode {
             if (degree > 0) {
                 r.servo1.setPosition(degree);
                 telemetry.addData("Servo", r.servo1.getPosition());
+            }
+
+            if(gamepad1.x && gamepad1.dpad_left) {
+                r.servo2.setPosition(0);
+            }
+
+            if(gamepad1.x && gamepad1.dpad_right) {
+                r.servo2.setPosition(1);
             }
 
 
