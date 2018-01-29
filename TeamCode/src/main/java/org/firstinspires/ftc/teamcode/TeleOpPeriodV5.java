@@ -24,7 +24,7 @@ public class TeleOpPeriodV5 extends LinearOpMode {
         r.init(hardwareMap);
         //reset de timer
         r.runtime.reset();
-        MediaPlayer wobbly = MediaPlayer.create(hardwareMap.appContext, R.raw.wobbly);
+
 
 
         //wacht tot play (niet init) ingedrukt wordt
@@ -71,7 +71,7 @@ public class TeleOpPeriodV5 extends LinearOpMode {
             if (gamepad1.x && !playing) {
                 telemetry.addData("Music", "playing");
                 telemetry.update();
-                wobbly.start();
+                r.wobbly.start();
                 playing = true;
 
             }
@@ -79,9 +79,9 @@ public class TeleOpPeriodV5 extends LinearOpMode {
             if (!gamepad1.x && playing) {
                 telemetry.addData("Music", "stopped");
                 telemetry.update();
-                wobbly.stop();
-                wobbly.reset();
-                wobbly = MediaPlayer.create(hardwareMap.appContext, R.raw.wobbly);
+                r.wobbly.stop();
+                r.wobbly.reset();
+                r.wobbly = MediaPlayer.create(hardwareMap.appContext, R.raw.wobbly);
                 playing =  false;
             }
 

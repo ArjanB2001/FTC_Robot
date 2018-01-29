@@ -28,6 +28,8 @@
  */
 
 package org.firstinspires.ftc.teamcode;
+import android.media.MediaPlayer;
+
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
@@ -65,6 +67,8 @@ public class HardwareVar
     public double RFpower;
     public double RBpower;
 
+    public MediaPlayer wobbly;
+
     public ElapsedTime runtime = new ElapsedTime();
 
     /* Constructor */
@@ -92,18 +96,17 @@ public class HardwareVar
         RFmotor.setDirection(DcMotor.Direction.FORWARD);
         RBmotor.setDirection(DcMotor.Direction.FORWARD);
 
-//        //Servo's
+        //Servo's
         servo1 = ahwMap.get(Servo.class, "servo1");
         servo2 = ahwMap.get(Servo.class, "servo2");
-//        legoServo = ahwMap.get(Servo.class, "legoServo");
-//
-//        //Sensoren
-//        rangeSensor = ahwMap.get(UltrasonicSensor.class, "rangeSensor");
-        colorSensor = ahwMap.get(HiTechnicNxtColorSensor.class, "colorSensor");
-//        touchSensor = ahwMap.get(TouchSensor.class, "touchSensor");
-//
-//        // Enable Servos
         servoController.pwmEnable();       // Don't forget to enable Matrix Output
+
+        //Sensoren
+        colorSensor = ahwMap.get(HiTechnicNxtColorSensor.class, "colorSensor");
+        //touchSensor = ahwMap.get(TouchSensor.class, "touchSensor");
+
+        MediaPlayer wobbly = MediaPlayer.create(ahwMap.appContext, R.raw.wobbly);
+
     }
 
     //Een method die alle motoren dezelfde power geeft
