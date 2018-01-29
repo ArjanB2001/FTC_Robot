@@ -17,12 +17,16 @@ public class TeleOpPeriodV5 extends LinearOpMode {
     HardwareVar r = new HardwareVar();
     double degree;
     double drive;
+    public Boolean playing = false;
 
     public void runOpMode(){
         //r. runt HardwareVar class
         r.init(hardwareMap);
         //reset de timer
         r.runtime.reset();
+        MediaPlayer wobbly = MediaPlayer.create(hardwareMap.appContext, R.raw.wobbly);
+
+
         //wacht tot play (niet init) ingedrukt wordt
         waitForStart();
  
@@ -52,10 +56,6 @@ public class TeleOpPeriodV5 extends LinearOpMode {
                 telemetry.addData("Servo:", "1");
             }
 
-            if(gamepad1.x && !gamepad1.dpad_left && !gamepad1.dpad_right) {
-                r.servo1.setPosition(0.7);
-                telemetry.addData("Servo:", "0.7");
-            }
 
             if(gamepad1.y) {
                 r.servo1.setPosition(0.6);
@@ -68,19 +68,29 @@ public class TeleOpPeriodV5 extends LinearOpMode {
                 telemetry.addData("Servo", r.servo1.getPosition());
             }
 
-            if(gamepad1.x && gamepad1.dpad_left) {
-                r.servo2.setPosition(0);
+            if (gamepad1.x && !playing) {
+                telemetry.addData("Music", "playing");
+                telemetry.update();
+                wobbly.start();
+                playing = true;
+
             }
 
-            if(gamepad1.x && gamepad1.dpad_right) {
-                r.servo2.setPosition(1);
+            if (!gamepad1.x && playing) {
+                telemetry.addData("Music", "stopped");
+                telemetry.update();
+                wobbly.stop();
+                wobbly.reset();
+                wobbly = MediaPlayer.create(hardwareMap.appContext, R.raw.wobbly);
+                playing =  false;
             }
 
 
-            telemetry.addData("rotation LFmotor", r.LFmotor.getPower());
-            telemetry.addData("rotation LBmotor", r.LBmotor.getPower());
-            telemetry.addData("rotation RFmotor", r.RFmotor.getPower());
-            telemetry.addData("rotation RBmotor", r.RBmotor.getPower());
+
+
+
+
+
             telemetry.addData("Degree", degree);
             telemetry.addData("ServoPos", r.servo1.getPosition());
             telemetry.update();
