@@ -27,25 +27,28 @@ public class TeleOpPeriodV2 extends LinearOpMode {
 
             //<editor-fold default="folded" desc="Forward Backward trigger, Left Right dpad, Sprint dpad_up">
 
-            double turnL;                                   //turn left
-            double turnR;                                   //turn right
-            double driveF = this.gamepad1.right_trigger;    //drive forward
+            double turn;                                    //draaien
+            double driveF = this.gamepad1.right_trigger;    //naar voren rijden (drive forward)
                    driveF = Range.clip(driveF, -0.2, 0.2);
-            double driveB = this.gamepad1.left_trigger;     //drive backward
+            double driveB = this.gamepad1.left_trigger;     //naar achteren rijden (drive backward)
                    driveB = Range.clip(driveB, -0.2, 0.2);
             double S;                                       //factor sprint
-            double drive = Range.clip(driveF - driveB, -0.1, 0.1); //omdat hij het anders niet doet
+            double drive = Range.clip(driveF - driveB, -0.1, 0.1);  //omdat hij het anders niet doet
+                                                                    //dit is om te bepalen of de snelheid positief of negatief is
 
-            if(gamepad1.dpad_left==true && driveF>0){
-                turnL = 0.15;
-            } else if(gamepad1.dpad_left==true && driveF<0) {
-                turnL = 0.15;
-            } else if (gamepad1.dpad_left==true) {
-                turnL = 0.3;
+            if((gamepad1.dpad_left==true || gamepad1.dpad_right==true) && driveF>0) {
+                //sturen tijdens rijden
+                turn = 0.08;
+            } else if((gamepad1.dpad_left==true || gamepad1.dpad_right==true) && driveF<0) {
+                //sturen tijdens achteruitrijden
+                turn = 0.08;
+            } else if (gamepad1.dpad_left==true || gamepad1.dpad_right==true) {
+                //op de plek draaien
+                turn = 0.3;
             } else {
-                turnL = 0.0;
+                turn = 0.0;
             }
-
+/*
             if(gamepad1.dpad_right==true && driveF>0){
                 turnR = 0.15;
             } else if(gamepad1.dpad_right==true && driveF<0){
@@ -55,23 +58,31 @@ public class TeleOpPeriodV2 extends LinearOpMode {
             } else {
                 turnR = 0.0;
             }
-
+*/
             if(gamepad1.dpad_up==true){
+                //dpad_up maakt de factor 5 i.p.v. 1 waardoor je een snelheids boost krijgt
                 S = 5;
             } else {
                 S = 1;
             }
 
-            if(drive>=0) {
-                r.LFpower = Range.clip(driveF * S - turnL, -1.0, 1.0);
-                r.LBpower = Range.clip(driveF * S - turnL, -1.0, 1.0);
-                r.RFpower = Range.clip(driveF * S + turnR, -1.0, 1.0);
-                r.RBpower = Range.clip(driveF * S + turnR, -1.0, 1.0);
+            if(drive>0) {
+                r.LFpower = Range.clip(driveF * S - turn, -1.0, 1.0);
+                r.LBpower = Range.clip(driveF * S - turn, -1.0, 1.0);
+                r.RFpower = Range.clip(driveF * S + turn, -1.0, 1.0);
+                r.RBpower = Range.clip(driveF * S + turn, -1.0, 1.0);
             } else if(drive<0){
-                r.LFpower = Range.clip(driveB * S + turnL, -1.0, 1.0);
-                r.LBpower = Range.clip(driveB * S + turnL, -1.0, 1.0);
-                r.RFpower = Range.clip(driveB * S - turnR, -1.0, 1.0);
-                r.RBpower = Range.clip(driveB * S - turnR, -1.0, 1.0);
+                //achteruit sturen was inverse, turnL en turnR daarom om gewisseld
+                r.LFpower = Range.clip(driveB * S + turn, -1.0, 1.0);
+                r.LBpower = Range.clip(driveB * S + turn, -1.0, 1.0);
+                r.RFpower = Range.clip(driveB * S - turn, -1.0, 1.0);
+                r.RBpower = Range.clip(driveB * S - turn, -1.0, 1.0);
+            } else if(drive==0){
+                //de sprint kan je gebruiken om, terwijl je stil staat, snel te draaien
+                r.LFpower = Range.clip((driveF - turn) * S, -1.0, 1.0);
+                r.LBpower = Range.clip((driveF - turn) * S, -1.0, 1.0);
+                r.RFpower = Range.clip((driveF + turn) * S, -1.0, 1.0);
+                r.RBpower = Range.clip((driveF + turn) * S, -1.0, 1.0);
             }
 
             //</editor-fold>
