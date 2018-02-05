@@ -63,32 +63,52 @@ public class AutonomousPeriod extends LinearOpMode {
         // run until the end of the match (driver presses STOP)
         while (opModeIsActive()) {
 
-            if(r.colorSensor.red() > r.colorSensor.blue() && r.colorSensor.red() >= 5) {
-                telemetry.addData("kleur:", "Waarschijnlijk rood");
-
-            }
-
-
-            if(r.colorSensor.blue() > r.colorSensor.red() && r.colorSensor.blue() >= 5 ) {
-                telemetry.addData("kleur:", "Waarschijnlijk blauw");
-
-            }
-
-
-
-
-            telemetry.addData("Clear", r.colorSensor.alpha());
-            telemetry.addData("Red  ", r.colorSensor.red());
-            telemetry.addData("Green", r.colorSensor.green());
-            telemetry.addData("Blue ", r.colorSensor.blue());
-
-
-            telemetry.update();
-
-            r.rotate(90);
-            sleep(1538);
+            //Test
+            r.powerAll(0.4);
+            sleep(353);
             r.powerAll(0);
             break;
+
+
+            //Lees kleur
+
+            //Bal omgooien
+
+            //Terug draaien
+
+            //90 graden draaien
+            //0.76 meter naar voren
+
+            // 90 graden terug draaien
+
+            //iets naar voren
+
+            //blok neerzetten
+
+            //ietsje  pietsje naar achter
+
+//            if(r.colorSensor.red() > r.colorSensor.blue() && r.colorSensor.red() >= 5 ) {
+//
+//            }
+//
+//
+//            if(r.colorSensor.blue() > r.colorSensor.red() && r.colorSensor.blue() >= 5 ) {
+//                telemetry.addData("kleur:", "Waarschijnlijk blauw");
+//
+//            }
+
+
+
+
+//            telemetry.addData("Clear", r.colorSensor.alpha());
+//            telemetry.addData("Red  ", r.colorSensor.red());
+//            telemetry.addData("Green", r.colorSensor.green());
+//            telemetry.addData("Blue ", r.colorSensor.blue());
+//
+//
+//            telemetry.update();
+
+
         }
     }
 }
