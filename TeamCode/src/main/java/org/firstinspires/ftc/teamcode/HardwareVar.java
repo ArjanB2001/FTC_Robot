@@ -110,7 +110,7 @@ public class HardwareVar
     }
 
     //Een method die alle motoren dezelfde power geeft
-    public void powerAll(double power) {
+    public void powerAll (double power){
         LFmotor.setPower(power);
         RFmotor.setPower(power);
         LBmotor.setPower(power);
