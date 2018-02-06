@@ -42,30 +42,30 @@ public class TeleOpPeriodV4 extends LinearOpMode {
 
 
             if (gamepad1.dpad_left && drive == 0) {
-                r.LFpower = -0.6;
-                r.LBpower = -0.6;
-                r.RBpower =  0.6;
-                r.RFpower =  0.6;
+                r.LFpower = -0.4;
+                r.LBpower = -0.4;
+                r.RBpower =  0.4;
+                r.RFpower =  0.4;
             }
 
             if (gamepad1.dpad_right && drive == 0) {
-                r.LFpower =  0.6;
-                r.LBpower =  0.6;
-                r.RBpower =  -0.6;
-                r.RFpower =  -0.6;
+                r.LFpower =  0.4;
+                r.LBpower =  0.4;
+                r.RBpower =  -0.4;
+                r.RFpower =  -0.4;
                 ;
             }
 
             if (gamepad1.dpad_left && drive > 0) {
                 r.LFpower = 0;
                 r.LBpower = 0;
-                r.RFpower = 0.9;
-                r.RBpower = 0.9;
+                r.RFpower = 0.7;
+                r.RBpower = 0.7;
             }
 
             if (gamepad1.dpad_right && drive > 0) {
-                r.LFpower = 0.9;
-                r.LBpower = 0.9;
+                r.LFpower = 0.7;
+                r.LBpower = 0.7;
                 r.RFpower = 0;
                 r.RBpower = 0;
             }

@@ -65,9 +65,11 @@ public class AutonomousPeriod extends LinearOpMode {
 
             //Test
             r.powerAll(0.4);
-            sleep(147);
+            sleep(1000);
             r.powerAll(0);
             break;
+
+
 
 
             //Lees kleur
