@@ -30,18 +30,9 @@
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
-import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 
-import com.disnodeteam.dogecv.CameraViewDisplay;
-import com.disnodeteam.dogecv.detectors.*;
-import com.qualcomm.robotcore.eventloop.opmode.Disabled;
-import com.qualcomm.robotcore.eventloop.opmode.OpMode;
-import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-import com.qualcomm.robotcore.util.ElapsedTime;
-import java.io.IOException;
+import static android.R.attr.y;
 
 
 /**
@@ -57,9 +48,9 @@ import java.io.IOException;
  * Remove or comment out the @Disabled line to add this opmode to the Driver Station OpMode list
  */
 
-@Autonomous(name="Autonomous Period", group="Linear Opmode")
+@Autonomous(name="Autonomous PeriodV3", group="Linear Opmode")
 //@Disabled
-public class AutonomousPeriod extends LinearOpMode {
+public class AutonomousPeriodV3 extends LinearOpMode {
 
     // Declare OpMode members.
     HardwareVar r = new HardwareVar();
@@ -74,23 +65,10 @@ public class AutonomousPeriod extends LinearOpMode {
         while (opModeIsActive()) {
 
             //Test
-            r.right(1);
-            sleep(800);
-            r.powerAll(0);
-
-            sleep(2000);
-
-            r.right(1);
+            r.powerAll(0.5);
             sleep(1000);
-
             r.powerAll(0);
-
-            sleep(2000);
-
-            r.right(1);
-            sleep(1500);
-            r.powerAll(0);
-            break;
+             break;
 
 
 

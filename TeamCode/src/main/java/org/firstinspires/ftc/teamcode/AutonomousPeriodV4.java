@@ -30,13 +30,13 @@
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
-import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
 import com.disnodeteam.dogecv.CameraViewDisplay;
 import com.disnodeteam.dogecv.detectors.*;
+import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
@@ -57,81 +57,62 @@ import java.io.IOException;
  * Remove or comment out the @Disabled line to add this opmode to the Driver Station OpMode list
  */
 
-@Autonomous(name="Autonomous Period", group="Linear Opmode")
+@Autonomous(name="Autonomous PeriodV4", group="Linear Opmode")
 //@Disabled
-public class AutonomousPeriod extends LinearOpMode {
+public class AutonomousPeriodV4 extends LinearOpMode {
 
     // Declare OpMode members.
     HardwareVar r = new HardwareVar();
+    private JewelDetector jewelDetector = null;
+    public Boolean tried = false;
 
     @Override
     public void runOpMode() {
         r.init(hardwareMap);
+        jewelDetector = new JewelDetector();
+        jewelDetector.init(hardwareMap.appContext, CameraViewDisplay.getInstance());
+
+        //Jewel Detector Settings
+        jewelDetector.areaWeight = 0.02;
+        jewelDetector.detectionMode = JewelDetector.JewelDetectionMode.MAX_AREA; // PERFECT_AREA
+        //jewelDetector.perfectArea = 6500; <- Needed for PERFECT_AREA
+        jewelDetector.debugContours = true;
+        jewelDetector.maxDiffrence = 15;
+        jewelDetector.ratioWeight = 15;
+        jewelDetector.minArea = 700;
+
+        jewelDetector.enable();
 
         waitForStart();
 
         // run until the end of the match (driver presses STOP)
         while (opModeIsActive()) {
 
-            //Test
-            r.right(1);
-            sleep(800);
-            r.powerAll(0);
+            if(jewelDetector.getLastOrder().toString() == "BLUE_RED" && !tried) {
+                r.LFmotor.setPower(-0.8);
+                r.LBmotor.setPower(0.8);
+                r.RFmotor.setPower(0.8);
+                r.RBmotor.setPower(-0.8);
+                sleep(450);
 
-            sleep(2000);
+                r.powerAll(0);
+                sleep(100);
 
-            r.right(1);
-            sleep(1000);
+                r.powerAll(0.3);
+                sleep(800);
 
-            r.powerAll(0);
+                r.powerAll(0);
+                sleep(200);
 
-            sleep(2000);
+                r.LFmotor.setPower(0.8);
+                r.LBmotor.setPower(0.8);
+                r.RFmotor.setPower(0.8);
+                r.RBmotor.setPower(-0.8);
+                sleep(250);
+                r.powerAll(0);
+                tried = true;
+            }
 
-            r.right(1);
-            sleep(1500);
-            r.powerAll(0);
-            break;
-
-
-
-
-            //Lees kleur
-
-            //Bal omgooien
-
-            //Terug draaien
-
-            //90 graden draaien
-            //0.76 meter naar voren
-
-            // 90 graden terug draaien
-
-            //iets naar voren
-
-            //blok neerzetten
-
-            //ietsje  pietsje naar achter
-
-//            if(r.colorSensor.red() > r.colorSensor.blue() && r.colorSensor.red() >= 5 ) {
-//
-//            }
-//
-//
-//            if(r.colorSensor.blue() > r.colorSensor.red() && r.colorSensor.blue() >= 5 ) {
-//                telemetry.addData("kleur:", "Waarschijnlijk blauw");
-//
-//            }
-
-
-
-
-//            telemetry.addData("Clear", r.colorSensor.alpha());
-//            telemetry.addData("Red  ", r.colorSensor.red());
-//            telemetry.addData("Green", r.colorSensor.green());
-//            telemetry.addData("Blue ", r.colorSensor.blue());
-//
-//
-//            telemetry.update();
 
 
         }

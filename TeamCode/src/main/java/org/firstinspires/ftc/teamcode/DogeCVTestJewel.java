@@ -41,7 +41,6 @@ public class DogeCVTestJewel extends OpMode
         jewelDetector.maxDiffrence = 15;
         jewelDetector.ratioWeight = 15;
         jewelDetector.minArea = 700;
-
         jewelDetector.enable();
 
 

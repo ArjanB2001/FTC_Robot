@@ -42,17 +42,22 @@ public class TeleOpPeriodV4 extends LinearOpMode {
 
 
             if (gamepad1.dpad_left && drive == 0) {
-                r.LFpower = -0.4;
-                r.LBpower = -0.4;
-                r.RBpower =  0.4;
-                r.RFpower =  0.4;
+                r.LFpower = -0.6;
+                r.LBpower = -0.6;
+                r.RBpower =  0.6;
+                r.RFpower =  0.6;
+            }
+
+            if (gamepad1.dpad_up && drive > 0) {
+                r.powerAll(1);
+
             }
 
             if (gamepad1.dpad_right && drive == 0) {
-                r.LFpower =  0.4;
-                r.LBpower =  0.4;
-                r.RBpower =  -0.4;
-                r.RFpower =  -0.4;
+                r.LFpower =  0.6;
+                r.LBpower =  0.6;
+                r.RBpower =  -0.6;
+                r.RFpower =  -0.6   ;
                 ;
             }
 
@@ -94,10 +99,7 @@ public class TeleOpPeriodV4 extends LinearOpMode {
 
             // = Range.clip(gamepad1.right_stick_x, 0  , 1.0) ;
 
-            if(gamepad1.a) {
-                r.servo1.setPosition(0.75);
-                telemetry.addData("Servo:", "0.75");
-            }
+
 
 
 
@@ -106,23 +108,22 @@ public class TeleOpPeriodV4 extends LinearOpMode {
                 telemetry.addData("Servo:", "1");
             }
 
-            if(gamepad1.x && !gamepad1.dpad_left && !gamepad1.dpad_right) {
+            if(gamepad1.a) {
                 r.servo1.setPosition(0.7);
+                telemetry.addData("Servo:", "0.75");
+            }
+
+            if(gamepad1.x) {
+                r.servo1.setPosition(0.68);
                 telemetry.addData("Servo:", "0.7");
             }
 
             if(gamepad1.y) {
-                r.servo1.setPosition(0.6);
+                r.servo1.setPosition(0.65 );
                 telemetry.addData("Servo:", "0.6");
             }
 
-            if(gamepad1.x && gamepad1.dpad_left) {
-                r.servo2.setPosition(0);
-            }
 
-            if(gamepad1.x && gamepad1.dpad_right) {
-                r.servo2.setPosition(1);
-            } 
 
 
             telemetry.addData("rotation LFmotor", r.LFmotor.getPower());
