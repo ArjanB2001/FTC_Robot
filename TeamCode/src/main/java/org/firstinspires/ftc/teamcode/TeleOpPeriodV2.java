@@ -4,8 +4,6 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.util.Range;
 
-import static android.R.attr.rotation;
-import static com.qualcomm.robotcore.util.Range.clip;
 import static com.sun.tools.javac.main.Option.S;
 
 @TeleOp(name = "TeleOpPeriodV2", group = "Linear Opmode")//
@@ -23,42 +21,41 @@ public class TeleOpPeriodV2 extends LinearOpMode {
         //wacht tot play (niet init) ingedrukt wordt
         waitForStart();
 
-        while(opModeIsActive()){
+        while(opModeIsActive()) {
 
             //<editor-fold default="folded" desc="Forward Backward trigger, Left Right dpad, Sprint dpad_up">
 
-            double turn;                                    //draaien
-            double driveF = this.gamepad1.right_trigger;    //naar voren rijden (drive forward)
-                   driveF = Range.clip(driveF, -0.2, 0.2);
-            double driveB = this.gamepad1.left_trigger;     //naar achteren rijden (drive backward)
-                   driveB = Range.clip(driveB, -0.2, 0.2);
-            double S;                                       //factor sprint
-            double drive = Range.clip(driveF - driveB, -0.1, 0.1);  //omdat hij het anders niet doet
-                                                                    //dit is om te bepalen of de snelheid positief of negatief is
+            double turnL;                                     //links om draaien
+            double turnR;                                     //rechts om draaien
+            double driveF = this.gamepad1.right_trigger;            //naar voren rijden (drive forward)
+            double driveB = this.gamepad1.left_trigger;             //naar achteren rijden (drive backward)
+            double S;                                               //factor sprint
+            double drive = Range.clip(driveF - driveB, -0.2, 0.2);  //omdat hij het anders niet doet
+            //dit is om te bepalen of de snelheid positief of negatief is
 
-            if((gamepad1.dpad_left==true || gamepad1.dpad_right==true) && driveF>0) {
+            if (gamepad1.dpad_left == true && drive > 0) {
                 //sturen tijdens rijden
-                turn = 0.15;
-            } else if((gamepad1.dpad_left==true || gamepad1.dpad_right==true) && driveF<0) {
+                turnL = 0.15;
+            } else if (gamepad1.dpad_left == true && drive < 0) {
                 //sturen tijdens achteruitrijden
-                turn = 0.15;
-            } else if (gamepad1.dpad_left==true || gamepad1.dpad_right==true) {
+                turnL = 0.15;
+            } else if (gamepad1.dpad_left == true && drive == 0) {
                 //op de plek draaien
-                turn = 0.3;
+                turnL = 0.3;
             } else {
-                turn = 0.0;
+                turnL = 0.0;
             }
-/*
-            if(gamepad1.dpad_right==true && driveF>0){
+
+            if(gamepad1.dpad_right==true && drive>=0){
                 turnR = 0.15;
-            } else if(gamepad1.dpad_right==true && driveF<0){
+            } else if(gamepad1.dpad_right==true && drive<0){
                 turnR = 0.15;
-            } else if(gamepad1.dpad_right==true){
+            } else if(gamepad1.dpad_right==true && drive==0){
                 turnR = 0.3;
             } else {
                 turnR = 0.0;
             }
-*/
+
             if(gamepad1.dpad_up==true){
                 //dpad_up maakt de factor 5 i.p.v. 1 waardoor je een snelheids boost krijgt
                 S = 5;
@@ -66,18 +63,20 @@ public class TeleOpPeriodV2 extends LinearOpMode {
                 S = 1;
             }
 
+            double turn = Range.clip(turnL + turnR, -0.2, 0.2);
+
             //om links en rechts te gaan wordt de plus en min voor turn om gedraait
             //omdat wanneer je achteruitgaat de draairichting verkeerd was is deze om gedraait
-            if((drive>=0 && gamepad1.dpad_left==true) || (drive<0 && gamepad1.dpad_right==true) || drive==0) {
-                r.LFpower = Range.clip((driveF + driveB) * S - turn, -1.0, 1.0);
-                r.LBpower = Range.clip((driveF + driveB) * S - turn, -1.0, 1.0);
-                r.RFpower = Range.clip((driveF + driveB) * S + turn, -1.0, 1.0);
-                r.RBpower = Range.clip((driveF + driveB) * S + turn, -1.0, 1.0);
-            } else if((drive>=0 && gamepad1.dpad_right==true) || (drive<0 && gamepad1.dpad_left==true)){
-                r.LFpower = Range.clip((driveF + driveB) * S + turn, -1.0, 1.0);
-                r.LBpower = Range.clip((driveF + driveB) * S + turn, -1.0, 1.0);
-                r.RFpower = Range.clip((driveF + driveB) * S - turn, -1.0, 1.0);
-                r.RBpower = Range.clip((driveF + driveB) * S - turn, -1.0, 1.0);
+            if(drive>=0) {
+                r.LFpower = Range.clip(drive * S - turn, -1.0, 1.0);
+                r.LBpower = Range.clip(drive * S - turn, -1.0, 1.0);
+                r.RFpower = Range.clip(drive * S + turn, -1.0, 1.0);
+                r.RBpower = Range.clip(drive * S + turn, -1.0, 1.0);
+            } else if(drive<0){
+                r.LFpower = Range.clip(drive * S + turn, -1.0, 1.0);
+                r.LBpower = Range.clip(drive * S + turn, -1.0, 1.0);
+                r.RFpower = Range.clip(drive * S - turn, -1.0, 1.0);
+                r.RBpower = Range.clip(drive * S - turn, -1.0, 1.0);
             }
 
             //</editor-fold>
@@ -85,18 +84,18 @@ public class TeleOpPeriodV2 extends LinearOpMode {
             //<editor-fold default="folded" desc="Crab Movement bumper">
 
             if(gamepad1.left_bumper==true){
-                r.LFpower =  0.3;
-                r.LBpower = -0.3;      //meer binnen,minder buiten
-                r.RFpower = -0.3;     //alleen minder binnen
-                r.RBpower =  0.3;
+                r.LFpower =  0.9;
+                r.LBpower = -0.9;      //meer binnen,minder buiten
+                r.RFpower = -0.9;     //alleen minder binnen
+                r.RBpower =  0.9;
 
             }
 
             if(gamepad1.right_bumper==true){
-                r.LFpower = -0.3;
-                r.LBpower =  0.3;
-                r.RFpower =  0.3;
-                r.RBpower = -0.3;
+                r.LFpower = -0.9;
+                r.LBpower =  0.9;
+                r.RFpower =  0.9;
+                r.RBpower = -0.9;
 
             }
 

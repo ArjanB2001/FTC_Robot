@@ -73,22 +73,8 @@ public class AutonomousPeriod extends LinearOpMode {
         // run until the end of the match (driver presses STOP)
         while (opModeIsActive()) {
 
-            //Test
-            r.right(1);
-            sleep(800);
-            r.powerAll(0);
-
-            sleep(2000);
-
-            r.right(1);
-            sleep(1000);
-
-            r.powerAll(0);
-
-            sleep(2000);
-
-            r.right(1);
-            sleep(1500);
+            r.powerAll(0.4);
+            sleep(1200);
             r.powerAll(0);
             break;
 
