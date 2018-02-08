@@ -29,6 +29,8 @@
 
 package org.firstinspires.ftc.teamcode;
 
+import com.disnodeteam.dogecv.CameraViewDisplay;
+import com.disnodeteam.dogecv.detectors.JewelDetector;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
@@ -46,26 +48,57 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
  * Remove or comment out the @Disabled line to add this opmode to the Driver Station OpMode list
  */
 
-@Autonomous(name="Autonomous PeriodV2", group="Linear Opmode")
+@Autonomous(name="Autonomous PeriodV2 TR", group="Linear Opmode")
 //@Disabled
 public class AutonomousPeriodV2_Test extends LinearOpMode {
 
     // Declare OpMode members.
     HardwareVar r = new HardwareVar();
-
+    private JewelDetector jewelDetector = null;
     @Override
     public void runOpMode() {
         r.init(hardwareMap);
 
+        jewelDetector = new JewelDetector();
+        jewelDetector.init(hardwareMap.appContext, CameraViewDisplay.getInstance());
+
+        //Jewel Detector Settings
+        jewelDetector.areaWeight = 0.02;
+        jewelDetector.detectionMode = JewelDetector.JewelDetectionMode.MAX_AREA; // PERFECT_AREA
+        //jewelDetector.perfectArea = 6500; <- Needed for PERFECT_AREA
+        jewelDetector.debugContours = true;
+        jewelDetector.maxDiffrence = 15;
+        jewelDetector.ratioWeight = 15;
+        jewelDetector.minArea = 700;
+        jewelDetector.enable();
+
+        r.servo1.setPosition(0.68);
         waitForStart();
 
         // run until the end of the match (driver presses STOP)
         while (opModeIsActive()) {
 
-            //Test
-            r.powerAll(0.5);
-            sleep(500);
-            r.powerAll(0);
+            if(jewelDetector.getLastOrder().toString() == "BLUE_RED") {
+                r.servo2 .setPosition(1);
+                sleep(100);
+                r.powerAll(0.4);
+                sleep(400);
+                r.servo2.setPosition(0);
+                sleep(600);
+                r.powerAll(0);
+                sleep(100);
+                r.right(0.5);
+                sleep(1250);
+                r.powerAll(0);
+                sleep(100);
+                r.powerAll(0.3);
+                sleep(800);
+                r.powerAll(0);
+                r.servo1.setPosition(1);
+
+            }
+
+
             break;
 
 
