@@ -34,6 +34,8 @@ import com.disnodeteam.dogecv.detectors.JewelDetector;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
+import static com.qualcomm.hardware.bosch.BNO055IMU.MagPowerMode.SLEEP;
+
 
 /**
  * This file contains an minimal example of a Linear "OpMode". An OpMode is a 'program' that runs in either
@@ -72,8 +74,8 @@ public class AutonomousPeriodV2 extends LinearOpMode {
         jewelDetector.minArea = 700;
         jewelDetector.enable();
 
-        r.servo1.setPosition(0.68);
-        r.servo1.setPosition(0.6);
+        r.servo1.setPosition(0.75);
+        r.servo2.setPosition(0.6);
         waitForStart();
 
         // run until the end of the match (driver presses STOP)
@@ -82,31 +84,38 @@ public class AutonomousPeriodV2 extends LinearOpMode {
             if(jewelDetector.getLastOrder().toString() == "BLUE_RED") {
                 r.servo2 .setPosition(0);
                 sleep(800);
+
                 r.powerAll(0.4);
                 sleep(400);
+
                 r.servo2.setPosition(0.6);
                 sleep(600);
+
                 r.powerAll(0);
                 sleep(100);
                 r.right(0.5);
-                sleep(1200);
+                sleep(125+- 0);
                 r.powerAll(0);
                 sleep(100);
                 r.powerAll(0.3);
-                sleep(800);
+                sleep(700);
                 r.powerAll(0);
                 r.servo1.setPosition(1);
+                sleep(100);
+                r.powerAll(-0.3);
+                sleep(300);
+                r.powerAll(0);
+                break;
 
             } else if(jewelDetector.getLastOrder().toString() == "RED_BLUE") {
-                r.servo2 .setPosition(0);
+                r.servo2.setPosition(0);
                 sleep(800);
                 r.powerAll(-0.4);
-                sleep(400);
+                sleep(600);
+                r.powerAll(0);
                 r.servo2.setPosition(0.6);
                 r.powerAll(0.4);
-                sleep(400);
-                r.powerAll(0.4);
-                sleep(1000);
+                sleep(1650);
                 r.powerAll(0);
                 sleep(100);
                 r.right(0.5);
@@ -117,6 +126,10 @@ public class AutonomousPeriodV2 extends LinearOpMode {
                 sleep(800);
                 r.powerAll(0);
                 r.servo1.setPosition(1);
+                r.powerAll(-0.3);
+                sleep(300);
+                r.powerAll(0 );
+                break;
             }
             jewelDetector.disable();
 
