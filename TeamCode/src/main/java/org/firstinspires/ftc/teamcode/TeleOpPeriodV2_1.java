@@ -4,6 +4,8 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.util.Range;
 
+import static com.sun.tools.doclint.HtmlTag.B;
+
 @TeleOp(name = "TeleOpPeriodV2_1", group = "Linear Opmode")//
 public class TeleOpPeriodV2_1 extends LinearOpMode {
 
@@ -37,10 +39,10 @@ public class TeleOpPeriodV2_1 extends LinearOpMode {
 
             if (gamepad1.dpad_left == true && drive > 0) {
                 //sturen tijdens rijden
-                turnL = 0.2;
+                turnL = 0.35;
             } else if (gamepad1.dpad_left == true && drive < 0) {
                 //sturen tijdens achteruitrijden
-                turnL = 0.2;
+                turnL = 0.35;
             } else if (gamepad1.dpad_left == true && drive == 0) {
                 //op de plek draaien
                 turnL = 0.4;
@@ -49,9 +51,9 @@ public class TeleOpPeriodV2_1 extends LinearOpMode {
             }
 
             if (gamepad1.dpad_right == true && drive >= 0) {
-                turnR = -0.2;
+                turnR = -0.35;
             } else if (gamepad1.dpad_right == true && drive < 0) {
-                turnR = -0.2;
+                turnR = -0.35;
             } else if (gamepad1.dpad_right == true && drive == 0) {
                 turnR = -0.4;
             } else {
@@ -68,13 +70,13 @@ public class TeleOpPeriodV2_1 extends LinearOpMode {
             if (gamepad1.left_bumper==true) {
                 B1 =  1;
                 B2 = -1;
-                B2 =  1;
-                B3 = -1;
+                B2 = -1;
+                B3 =  1;
             }else if (gamepad1.right_bumper==true) {
                 B1 = -1;
                 B2 =  1;
-                B3 = -1;
-                B4 =  1;
+                B3 =  1;
+                B4 = -1;
             }
 
 
@@ -84,35 +86,15 @@ public class TeleOpPeriodV2_1 extends LinearOpMode {
             //om links en rechts te gaan wordt de plus en min voor turn om gedraait
             //omdat wanneer je achteruitgaat de draairichting verkeerd was is deze om gedraait
             if(drive>=0) {
-                r.LFpower = Range.clip(B1*(drive * S - turn), -1.0, 1.0);
-                r.LBpower = Range.clip(B2*(drive * S - turn), -1.0, 1.0);
-                r.RFpower = Range.clip(B3*(drive * S + turn), -1.0, 1.0);
-                r.RBpower = Range.clip(B4*(drive * S + turn), -1.0, 1.0);
+                r.LFpower = Range.clip(B1*(drive * S - turn)+B1, -1.0, 1.0);
+                r.LBpower = Range.clip(B2*(drive * S - turn)+B2, -1.0, 1.0);
+                r.RFpower = Range.clip(B3*(drive * S + turn)+B3, -1.0, 1.0);
+                r.RBpower = Range.clip(B4*(drive * S + turn)+B4, -1.0, 1.0);
             } else if(drive<0){
-                r.LFpower = Range.clip(B1*(drive * S + turn), -1.0, 1.0);
-                r.LBpower = Range.clip(B2*(drive * S + turn), -1.0, 1.0);
-                r.RFpower = Range.clip(B3*(drive * S - turn), -1.0, 1.0);
-                r.RBpower = Range.clip(B4*(drive * S - turn), -1.0, 1.0);
-            }
-
-            //</editor-fold>
-
-            //<editor-fold default="folded" desc="Crab Movement bumper">
-
-            if(gamepad1.left_bumper==true){
-                r.LFpower =  0.8;
-                r.LBpower = -0.8;      //meer binnen,minder buiten
-                r.RFpower = -0.8;     //alleen minder binnen
-                r.RBpower =  0.8;
-
-            }
-
-            if(gamepad1.right_bumper==true){
-                r.LFpower = -0.8;
-                r.LBpower =  0.8;
-                r.RFpower =  0.8;
-                r.RBpower = -0.8;
-
+                r.LFpower = Range.clip(B1*(drive * S + turn)+B1, -1.0, 1.0);
+                r.LBpower = Range.clip(B2*(drive * S + turn)+B2, -1.0, 1.0);
+                r.RFpower = Range.clip(B3*(drive * S - turn)+B3, -1.0, 1.0);
+                r.RBpower = Range.clip(B4*(drive * S - turn)+B4, -1.0, 1.0);
             }
 
             //</editor-fold>

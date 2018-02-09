@@ -35,10 +35,10 @@ public class TeleOpPeriodV2 extends LinearOpMode {
 
             if (gamepad1.dpad_left == true && drive > 0) {
                 //sturen tijdens rijden
-                turnL = 0.2;
+                turnL = 0.35;
             } else if (gamepad1.dpad_left == true && drive < 0) {
                 //sturen tijdens achteruitrijden
-                turnL = 0.2;
+                turnL = 0.35;
             } else if (gamepad1.dpad_left == true && drive == 0) {
                 //op de plek draaien
                 turnL = 0.4;
@@ -47,9 +47,9 @@ public class TeleOpPeriodV2 extends LinearOpMode {
             }
 
             if(gamepad1.dpad_right==true && drive>=0){
-                turnR = -0.2;
+                turnR = -0.35;
             } else if(gamepad1.dpad_right==true && drive<0){
-                turnR = -0.2;
+                turnR = -0.35;
             } else if(gamepad1.dpad_right==true && drive==0){
                 turnR = -0.4;
             } else {
