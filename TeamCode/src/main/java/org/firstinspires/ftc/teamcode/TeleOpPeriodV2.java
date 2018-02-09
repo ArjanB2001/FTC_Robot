@@ -33,10 +33,10 @@ public class TeleOpPeriodV2 extends LinearOpMode {
             double drive = Range.clip(driveF - driveB, -0.3, 0.3);  //omdat hij het anders niet doet
             //dit is om te bepalen of de snelheid positief of negatief is
 
-            if (gamepad1.dpad_left == true && drive > 0) {
+            if (gamepad1.dpad_left == true && drive>0) {
                 //sturen tijdens rijden
                 turnL = 0.35;
-            } else if (gamepad1.dpad_left == true && drive < 0) {
+            } else if (gamepad1.dpad_left == true && drive<0) {
                 //sturen tijdens achteruitrijden
                 turnL = 0.35;
             } else if (gamepad1.dpad_left == true && drive == 0) {
@@ -46,7 +46,7 @@ public class TeleOpPeriodV2 extends LinearOpMode {
                 turnL = 0.0;
             }
 
-            if(gamepad1.dpad_right==true && drive>=0){
+            if(gamepad1.dpad_right==true && drive>0){
                 turnR = -0.35;
             } else if(gamepad1.dpad_right==true && drive<0){
                 turnR = -0.35;
