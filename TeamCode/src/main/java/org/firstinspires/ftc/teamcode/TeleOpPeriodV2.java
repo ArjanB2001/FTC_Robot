@@ -11,7 +11,6 @@ public class TeleOpPeriodV2 extends LinearOpMode {
 
     //om HardwareVar class te kunnen gebruiken (gebruik voor elke variabele r.)
     HardwareVar r = new HardwareVar();
-    double degree;
 
     public void runOpMode(){
         //r. runt HardwareVar class
@@ -46,11 +45,11 @@ public class TeleOpPeriodV2 extends LinearOpMode {
                 turnL = 0.0;
             }
 
-            if(gamepad1.dpad_right==true && drive>0){
+            if(gamepad1.dpad_right == true && drive>0){
                 turnR = -0.35;
-            } else if(gamepad1.dpad_right==true && drive<0){
+            } else if(gamepad1.dpad_right == true && drive<0){
                 turnR = -0.35;
-            } else if(gamepad1.dpad_right==true && drive==0){
+            } else if(gamepad1.dpad_right == true && drive==0){
                 turnR = -0.4;
             } else {
                 turnR = 0.0;
@@ -84,18 +83,18 @@ public class TeleOpPeriodV2 extends LinearOpMode {
             //<editor-fold default="folded" desc="Crab Movement bumper">
 
             if(gamepad1.left_bumper==true){
-                r.LFpower =  0.8;
-                r.LBpower = -0.8;      //meer binnen,minder buiten
-                r.RFpower = -0.8;     //alleen minder binnen
-                r.RBpower =  0.8;
+                r.LFpower =  0.6;
+                r.LBpower = -0.6;      //meer binnen,minder buiten
+                r.RFpower = -0.6;     //alleen minder binnen
+                r.RBpower =  0.6;
 
             }
 
             if(gamepad1.right_bumper==true){
-                r.LFpower = -0.8;
-                r.LBpower =  0.8;
-                r.RFpower =  0.8;
-                r.RBpower = -0.8;
+                r.LFpower = -0.6;
+                r.LBpower =  0.6;
+                r.RFpower =  0.6;
+                r.RBpower = -0.6;
 
             }
 
@@ -110,18 +109,10 @@ public class TeleOpPeriodV2 extends LinearOpMode {
 
             //</editor-fold>
 
-            degree = Range.clip(gamepad1.right_stick_x, 0  , 1.0) ;
-
-            if(gamepad1.a) {
-                r.servo1.setPosition(degree);
-            }
-
             telemetry.addData("rotation LFmotor", r.LFmotor.getPower());
             telemetry.addData("rotation LBmotor", r.LBmotor.getPower());
             telemetry.addData("rotation RFmotor", r.RFmotor.getPower());
             telemetry.addData("rotation RBmotor", r.RBmotor.getPower());
-            telemetry.addData("Degree", degree);
-            telemetry.addData("ServoPos", r.servo1.getPosition());
             telemetry.update();
 
 
