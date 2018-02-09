@@ -48,9 +48,9 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
  * Remove or comment out the @Disabled line to add this opmode to the Driver Station OpMode list
  */
 
-@Autonomous(name="Autonomous PeriodV2 TR", group="Linear Opmode")
+@Autonomous(name="Autonomous PeriodV2.1 TR", group="Linear Opmode")
 //@Disabled
-public class AutonomousPeriodV2_Test extends LinearOpMode {
+public class AutonomousPeriodV2_1 extends LinearOpMode {
 
     // Declare OpMode members.
     HardwareVar r = new HardwareVar();
@@ -79,22 +79,22 @@ public class AutonomousPeriodV2_Test extends LinearOpMode {
         while (opModeIsActive()) {
 
             if(jewelDetector.getLastOrder().toString() == "BLUE_RED") {
-                r.servo2 .setPosition(1);
-                sleep(100);
                 r.powerAll(0.4);
-                sleep(400);
-                r.servo2.setPosition(0);
-                sleep(600);
+                sleep(1000);
                 r.powerAll(0);
                 sleep(100);
                 r.right(0.5);
-                sleep(1250);
+                sleep(1000);
                 r.powerAll(0);
                 sleep(100);
                 r.powerAll(0.3);
                 sleep(800);
                 r.powerAll(0);
                 r.servo1.setPosition(1);
+                r.powerAll(-0.2);
+                sleep(300);
+                r.powerAll(0);
+                break;
 
             }
 
