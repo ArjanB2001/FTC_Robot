@@ -81,7 +81,7 @@ public class AutonomousPeriodV2 extends LinearOpMode {
 
             if(jewelDetector.getLastOrder().toString() == "BLUE_RED") {
                 r.servo2 .setPosition(0);
-                sleep(100);
+                sleep(500);
                 r.powerAll(0.4);
                 sleep(400);
                 r.servo2.setPosition(0.6);
