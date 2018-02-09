@@ -4,10 +4,8 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.util.Range;
 
-import static com.sun.tools.javac.main.Option.S;
-
-@TeleOp(name = "TeleOpPeriodV2", group = "Linear Opmode")//
-public class TeleOpPeriodV2 extends LinearOpMode {
+@TeleOp(name = "TeleOpPeriodV2_1", group = "Linear Opmode")//
+public class TeleOpPeriodV2_1 extends LinearOpMode {
 
     //om HardwareVar class te kunnen gebruiken (gebruik voor elke variabele r.)
     HardwareVar r = new HardwareVar();
