@@ -73,17 +73,18 @@ public class AutonomousPeriodV2 extends LinearOpMode {
         jewelDetector.enable();
 
         r.servo1.setPosition(0.68);
+        r.servo1.setPosition(0.6);
         waitForStart();
 
         // run until the end of the match (driver presses STOP)
         while (opModeIsActive()) {
 
             if(jewelDetector.getLastOrder().toString() == "BLUE_RED") {
-                r.servo2 .setPosition(1);
+                r.servo2 .setPosition(0);
                 sleep(100);
                 r.powerAll(0.4);
                 sleep(400);
-                r.servo2.setPosition(0);
+                r.servo2.setPosition(0.6);
                 sleep(600);
                 r.powerAll(0);
                 sleep(100);
@@ -97,6 +98,7 @@ public class AutonomousPeriodV2 extends LinearOpMode {
                 r.servo1.setPosition(1);
 
             }
+            jewelDetector.disable();
 
 
             break;

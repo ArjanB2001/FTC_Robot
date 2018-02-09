@@ -95,17 +95,17 @@ public class TeleOpPeriodV3 extends LinearOpMode {
             // = Range.clip(gamepad1.right_stick_x, 0  , 1.0) ;
 
             if(gamepad1.a) {
-                r.servo1.setPosition(0.3);
+                r.servo2.setPosition(0);
                 telemetry.addData("Servo:", "0.3");
             }
 
-            if(gamepad1.y) {
-                r.servo1.setPosition(0);
+            if(gamepad1.x) {
+                r.servo2.setPosition(0.5);
                 telemetry.addData("Servo:", "0");
             }
 
-            if(gamepad1.b) {
-                r.servo1.setPosition(1);
+            if(gamepad1.y) {
+                r.servo2.setPosition(1);
                 telemetry.addData("Servo:", "1");
             }
 
