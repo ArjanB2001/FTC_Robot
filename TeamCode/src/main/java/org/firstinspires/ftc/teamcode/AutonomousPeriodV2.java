@@ -81,7 +81,7 @@ public class AutonomousPeriodV2 extends LinearOpMode {
 
             if(jewelDetector.getLastOrder().toString() == "BLUE_RED") {
                 r.servo2 .setPosition(0);
-                sleep(500);
+                sleep(800);
                 r.powerAll(0.4);
                 sleep(400);
                 r.servo2.setPosition(0.6);
@@ -89,7 +89,7 @@ public class AutonomousPeriodV2 extends LinearOpMode {
                 r.powerAll(0);
                 sleep(100);
                 r.right(0.5);
-                sleep(1000);
+                sleep(1200);
                 r.powerAll(0);
                 sleep(100);
                 r.powerAll(0.3);
@@ -97,6 +97,26 @@ public class AutonomousPeriodV2 extends LinearOpMode {
                 r.powerAll(0);
                 r.servo1.setPosition(1);
 
+            } else if(jewelDetector.getLastOrder().toString() == "RED_BLUE") {
+                r.servo2 .setPosition(0);
+                sleep(800);
+                r.powerAll(-0.4);
+                sleep(400);
+                r.servo2.setPosition(0.6);
+                r.powerAll(0.4);
+                sleep(400);
+                r.powerAll(0.4);
+                sleep(1000);
+                r.powerAll(0);
+                sleep(100);
+                r.right(0.5);
+                sleep(1200);
+                r.powerAll(0);
+                sleep(100);
+                r.powerAll(0.3);
+                sleep(800);
+                r.powerAll(0);
+                r.servo1.setPosition(1);
             }
             jewelDetector.disable();
 
