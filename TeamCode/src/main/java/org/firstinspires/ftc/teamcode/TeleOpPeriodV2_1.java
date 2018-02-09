@@ -36,13 +36,14 @@ public class TeleOpPeriodV2_1 extends LinearOpMode {
             double B2 = 1;
             double B3 = 1;
             double B4 = 1;
+            double B;
 
-            if (gamepad1.dpad_left == true && drive > 0) {
+            if (gamepad1.dpad_left == true && drive>0) {
                 //sturen tijdens rijden
-                turnL = 0.35;
-            } else if (gamepad1.dpad_left == true && drive < 0) {
+                turnL = 0.25;
+            } else if (gamepad1.dpad_left == true && drive<0) {
                 //sturen tijdens achteruitrijden
-                turnL = 0.35;
+                turnL = 0.25;
             } else if (gamepad1.dpad_left == true && drive == 0) {
                 //op de plek draaien
                 turnL = 0.4;
@@ -50,10 +51,10 @@ public class TeleOpPeriodV2_1 extends LinearOpMode {
                 turnL = 0.0;
             }
 
-            if (gamepad1.dpad_right == true && drive >= 0) {
-                turnR = -0.35;
-            } else if (gamepad1.dpad_right == true && drive < 0) {
-                turnR = -0.35;
+            if (gamepad1.dpad_right == true && drive>0) {
+                turnR = -0.25;
+            } else if (gamepad1.dpad_right == true && drive<0) {
+                turnR = -0.25;
             } else if (gamepad1.dpad_right == true && drive == 0) {
                 turnR = -0.4;
             } else {
@@ -79,22 +80,26 @@ public class TeleOpPeriodV2_1 extends LinearOpMode {
                 B4 = -1;
             }
 
+            if((gamepad1.left_bumper==true || gamepad1.right_bumper==true) && drive==0){
+                B = 0.4;
+            } else{
+                B = 0;
+            }
 
-
-            double turn = Range.clip(turnL + turnR, -0.4, 0.4);
+                double turn = Range.clip(turnL + turnR, -0.4, 0.4);
 
             //om links en rechts te gaan wordt de plus en min voor turn om gedraait
             //omdat wanneer je achteruitgaat de draairichting verkeerd was is deze om gedraait
             if(drive>=0) {
-                r.LFpower = Range.clip(B1*(drive * S - turn)+B1, -1.0, 1.0);
-                r.LBpower = Range.clip(B2*(drive * S - turn)+B2, -1.0, 1.0);
-                r.RFpower = Range.clip(B3*(drive * S + turn)+B3, -1.0, 1.0);
-                r.RBpower = Range.clip(B4*(drive * S + turn)+B4, -1.0, 1.0);
+                r.LFpower = Range.clip(B1*(drive * S - turn)+B, -1.0, 1.0);
+                r.LBpower = Range.clip(B2*(drive * S - turn)+B, -1.0, 1.0);
+                r.RFpower = Range.clip(B3*(drive * S + turn)+B, -1.0, 1.0);
+                r.RBpower = Range.clip(B4*(drive * S + turn)+B, -1.0, 1.0);
             } else if(drive<0){
-                r.LFpower = Range.clip(B1*(drive * S + turn)+B1, -1.0, 1.0);
-                r.LBpower = Range.clip(B2*(drive * S + turn)+B2, -1.0, 1.0);
-                r.RFpower = Range.clip(B3*(drive * S - turn)+B3, -1.0, 1.0);
-                r.RBpower = Range.clip(B4*(drive * S - turn)+B4, -1.0, 1.0);
+                r.LFpower = Range.clip(B1*(drive * S + turn)+B, -1.0, 1.0);
+                r.LBpower = Range.clip(B2*(drive * S + turn)+B, -1.0, 1.0);
+                r.RFpower = Range.clip(B3*(drive * S - turn)+B, -1.0, 1.0);
+                r.RBpower = Range.clip(B4*(drive * S - turn)+B, -1.0, 1.0);
             }
 
             //</editor-fold>
@@ -108,18 +113,10 @@ public class TeleOpPeriodV2_1 extends LinearOpMode {
 
             //</editor-fold>
 
-            degree = Range.clip(gamepad1.right_stick_x, 0  , 1.0) ;
-
-            if(gamepad1.a) {
-                r.servo1.setPosition(degree);
-            }
-
             telemetry.addData("rotation LFmotor", r.LFmotor.getPower());
             telemetry.addData("rotation LBmotor", r.LBmotor.getPower());
             telemetry.addData("rotation RFmotor", r.RFmotor.getPower());
             telemetry.addData("rotation RBmotor", r.RBmotor.getPower());
-            telemetry.addData("Degree", degree);
-            telemetry.addData("ServoPos", r.servo1.getPosition());
             telemetry.update();
 
 
