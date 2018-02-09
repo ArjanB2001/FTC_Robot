@@ -30,6 +30,10 @@ public class TeleOpPeriodV2_1 extends LinearOpMode {
             double S;                                               //factor sprint
             double drive = Range.clip(driveF - driveB, -0.3, 0.3);  //omdat hij het anders niet doet
             //dit is om te bepalen of de snelheid positief of negatief is
+            double B1 = 1;
+            double B2 = 1;
+            double B3 = 1;
+            double B4 = 1;
 
             if (gamepad1.dpad_left == true && drive > 0) {
                 //sturen tijdens rijden
@@ -44,37 +48,51 @@ public class TeleOpPeriodV2_1 extends LinearOpMode {
                 turnL = 0.0;
             }
 
-            if(gamepad1.dpad_right==true && drive>=0){
+            if (gamepad1.dpad_right == true && drive >= 0) {
                 turnR = -0.2;
-            } else if(gamepad1.dpad_right==true && drive<0){
+            } else if (gamepad1.dpad_right == true && drive < 0) {
                 turnR = -0.2;
-            } else if(gamepad1.dpad_right==true && drive==0){
+            } else if (gamepad1.dpad_right == true && drive == 0) {
                 turnR = -0.4;
             } else {
                 turnR = 0.0;
             }
 
-            if(gamepad1.dpad_up==true){
+            if (gamepad1.dpad_up == true) {
                 //dpad_up maakt de factor 5 i.p.v. 1 waardoor je een snelheids boost krijgt
                 S = 5;
             } else {
                 S = 1;
             }
 
+            if (gamepad1.left_bumper==true) {
+                B1 =  1;
+                B2 = -1;
+                B2 =  1;
+                B3 = -1;
+            }else if (gamepad1.right_bumper==true) {
+                B1 = -1;
+                B2 =  1;
+                B3 = -1;
+                B4 =  1;
+            }
+
+
+
             double turn = Range.clip(turnL + turnR, -0.4, 0.4);
 
             //om links en rechts te gaan wordt de plus en min voor turn om gedraait
             //omdat wanneer je achteruitgaat de draairichting verkeerd was is deze om gedraait
             if(drive>=0) {
-                r.LFpower = Range.clip(drive * S - turn, -1.0, 1.0);
-                r.LBpower = Range.clip(drive * S - turn, -1.0, 1.0);
-                r.RFpower = Range.clip(drive * S + turn, -1.0, 1.0);
-                r.RBpower = Range.clip(drive * S + turn, -1.0, 1.0);
+                r.LFpower = Range.clip(B1*(drive * S - turn), -1.0, 1.0);
+                r.LBpower = Range.clip(B2*(drive * S - turn), -1.0, 1.0);
+                r.RFpower = Range.clip(B3*(drive * S + turn), -1.0, 1.0);
+                r.RBpower = Range.clip(B4*(drive * S + turn), -1.0, 1.0);
             } else if(drive<0){
-                r.LFpower = Range.clip(drive * S + turn, -1.0, 1.0);
-                r.LBpower = Range.clip(drive * S + turn, -1.0, 1.0);
-                r.RFpower = Range.clip(drive * S - turn, -1.0, 1.0);
-                r.RBpower = Range.clip(drive * S - turn, -1.0, 1.0);
+                r.LFpower = Range.clip(B1*(drive * S + turn), -1.0, 1.0);
+                r.LBpower = Range.clip(B2*(drive * S + turn), -1.0, 1.0);
+                r.RFpower = Range.clip(B3*(drive * S - turn), -1.0, 1.0);
+                r.RBpower = Range.clip(B4*(drive * S - turn), -1.0, 1.0);
             }
 
             //</editor-fold>
