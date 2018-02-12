@@ -25,8 +25,6 @@ public class TeleOpPeriodV5 extends LinearOpMode {
         //reset de timer
         r.runtime.reset();
 
-
-
         //wacht tot play (niet init) ingedrukt wordt
         waitForStart();
  

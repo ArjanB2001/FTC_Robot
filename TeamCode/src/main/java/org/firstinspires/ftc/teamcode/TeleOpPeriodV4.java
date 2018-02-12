@@ -120,7 +120,7 @@ public class TeleOpPeriodV4 extends LinearOpMode {
 
             if(gamepad1.y) {
                 r.servo1.setPosition(0.68 );
-                telemetry.addData("Servo:", "0.6");
+                telemetry.addData("Servo:", "0.68");
             }
 
 

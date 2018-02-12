@@ -100,6 +100,8 @@ public class TeleOpPeriodV2 extends LinearOpMode {
 
             //</editor-fold>
 
+
+
             //<editor-fold default="folded" desc="Set Motor Power">
 
             r.LFmotor.setPower(r.LFpower);
