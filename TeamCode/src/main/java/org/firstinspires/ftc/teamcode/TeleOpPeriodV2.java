@@ -34,23 +34,23 @@ public class TeleOpPeriodV2 extends LinearOpMode {
 
             if (gamepad1.dpad_left == true && drive>0) {
                 //sturen tijdens rijden
-                turnL = 0.35;
+                turnL = 0.3;
             } else if (gamepad1.dpad_left == true && drive<0) {
                 //sturen tijdens achteruitrijden
-                turnL = 0.35;
+                turnL = 0.3;
             } else if (gamepad1.dpad_left == true && drive == 0) {
                 //op de plek draaien
-                turnL = 0.4;
+                turnL = 0.7;
             } else {
                 turnL = 0.0;
             }
 
             if(gamepad1.dpad_right == true && drive>0){
-                turnR = -0.35;
+                turnR = -0.3;
             } else if(gamepad1.dpad_right == true && drive<0){
-                turnR = -0.35;
+                turnR = -0.3;
             } else if(gamepad1.dpad_right == true && drive==0){
-                turnR = -0.4;
+                turnR = -0.7;
             } else {
                 turnR = 0.0;
             }
@@ -62,7 +62,7 @@ public class TeleOpPeriodV2 extends LinearOpMode {
                 S = 1;
             }
 
-            double turn = Range.clip(turnL + turnR, -0.4, 0.4);
+            double turn = Range.clip(turnL + turnR, -0.7, 0.7);
 
             //om links en rechts te gaan wordt de plus en min voor turn om gedraait
             //omdat wanneer je achteruitgaat de draairichting verkeerd was is deze om gedraait
@@ -99,6 +99,8 @@ public class TeleOpPeriodV2 extends LinearOpMode {
             }
 
             //</editor-fold>
+
+
 
             //<editor-fold default="folded" desc="Set Motor Power">
 

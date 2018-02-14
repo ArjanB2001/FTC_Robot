@@ -25,13 +25,11 @@ public class TeleOpPeriodV5 extends LinearOpMode {
         //reset de timer
         r.runtime.reset();
 
-
-
         //wacht tot play (niet init) ingedrukt wordt
         waitForStart();
  
         while(opModeIsActive()){
-            double o = Math.hypot(gamepad1.left_stick_x, gamepad1.left_stick_y);
+            double o = -Math.hypot(gamepad1.left_stick_x, gamepad1.left_stick_y);
             double robotAngle = Math.atan2(gamepad1.left_stick_y, gamepad1.left_stick_x) - Math.PI / 4;
             double rightX = gamepad1.right_stick_x;
             final double v1 = o * Math.cos(robotAngle) + rightX;
