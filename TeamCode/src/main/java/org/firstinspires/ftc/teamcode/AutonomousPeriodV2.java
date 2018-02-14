@@ -94,7 +94,7 @@ public class AutonomousPeriodV2 extends LinearOpMode {
                 r.powerAll(0);
                 sleep(100);
                 r.right(0.5);
-                sleep(125+- 0);
+                sleep(1250);
                 r.powerAll(0);
                 sleep(100);
                 r.powerAll(0.3);
