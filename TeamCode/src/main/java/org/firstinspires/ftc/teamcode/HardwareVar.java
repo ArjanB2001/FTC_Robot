@@ -56,8 +56,8 @@ public class HardwareVar
     public DcMotor LBmotor;
     public DcMotor RFmotor;
     public DcMotor RBmotor;
-    public Servo servo1;
-    public Servo servo2;
+    public Servo grijp;
+    public Servo arm;
 //    public Servo legoServo;
 //    public UltrasonicSensor         rangeSensor;
     public HiTechnicNxtColorSensor  colorSensor;
@@ -99,8 +99,8 @@ public class HardwareVar
         RBmotor.setDirection(DcMotor.Direction.FORWARD);
 
         //Servo's
-        servo1 = ahwMap.get(Servo.class, "servo1");
-        servo2 = ahwMap.get(Servo.class, "servo2");
+        grijp = ahwMap.get(Servo.class, "servo1");
+        arm = ahwMap.get(Servo.class, "servo2");
         servoController.pwmEnable();       // Don't forget to enable Matrix Output
 
         //Sensoren
@@ -163,8 +163,8 @@ public class HardwareVar
    }
 
    public void neutral() {
-       servo1.setPosition(0);
-       servo2.setPosition(0);
+       grijp.setPosition(0);
+       arm.setPosition(0);
 
    }
 }

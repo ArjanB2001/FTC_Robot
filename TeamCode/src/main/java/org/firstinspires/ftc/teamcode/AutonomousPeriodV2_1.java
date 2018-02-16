@@ -72,7 +72,7 @@ public class AutonomousPeriodV2_1 extends LinearOpMode {
         jewelDetector.minArea = 700;
         jewelDetector.enable();
 
-        r.servo1.setPosition(0.68);
+        r.grijp.setPosition(0.68);
         waitForStart();
 
         // run until the end of the match (driver presses STOP)
@@ -90,7 +90,7 @@ public class AutonomousPeriodV2_1 extends LinearOpMode {
                 r.powerAll(0.3);
                 sleep(800);
                 r.powerAll(0);
-                r.servo1.setPosition(1);
+                r.grijp.setPosition(1);
                 r.powerAll(-0.2);
                 sleep(300);
                 r.powerAll(0);

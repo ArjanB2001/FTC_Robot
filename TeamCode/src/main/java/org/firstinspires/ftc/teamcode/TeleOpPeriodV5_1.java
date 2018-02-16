@@ -14,7 +14,7 @@ public class TeleOpPeriodV5_1 extends LinearOpMode {
     TeleOpPeriodV5_1 setSpeed = new TeleOpPeriodV5_1();
     //om HardwareVar class te kunnen gebruiken (gebruik voor elke variabele r.)
     HardwareVar r = new HardwareVar();
-    string  method;
+    String  method;
 
     public void low() {
 

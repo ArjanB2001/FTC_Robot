@@ -114,7 +114,7 @@ public class TeleOpPeriodV6 extends LinearOpMode {
             degree = Range.clip(gamepad1.right_stick_x, 0  , 1.0) ;
 
             if(gamepad1.a) {
-                r.servo1.setPosition(degree);
+                r.grijp.setPosition(degree);
             }
 
             telemetry.addData("rotation LFmotor", r.LFmotor.getPower());
@@ -122,7 +122,7 @@ public class TeleOpPeriodV6 extends LinearOpMode {
             telemetry.addData("rotation RFmotor", r.RFmotor.getPower());
             telemetry.addData("rotation RBmotor", r.RBmotor.getPower());
             telemetry.addData("Degree", degree);
-            telemetry.addData("ServoPos", r.servo1.getPosition());
+            telemetry.addData("ServoPos", r.grijp.getPosition());
             telemetry.update();
 
 

@@ -74,21 +74,21 @@ public class AutonomousPeriodV2 extends LinearOpMode {
         jewelDetector.minArea = 700;
         jewelDetector.enable();
 
-        r.servo1.setPosition(0.75);
-        r.servo2.setPosition(0.6);
+        r.grijp.setPosition(0.75);
+        r.arm.setPosition(0.6);
         waitForStart();
 
         // run until the end of the match (driver presses STOP)
         while (opModeIsActive()) {
 
             if(jewelDetector.getLastOrder().toString() == "BLUE_RED") {
-                r.servo2 .setPosition(0);
+                r.arm .setPosition(0);
                 sleep(800);
 
                 r.powerAll(0.4);
                 sleep(400);
 
-                r.servo2.setPosition(0.6);
+                r.arm.setPosition(0.6);
                 sleep(600);
 
                 r.powerAll(0);
@@ -100,7 +100,7 @@ public class AutonomousPeriodV2 extends LinearOpMode {
                 r.powerAll(0.3);
                 sleep(700);
                 r.powerAll(0);
-                r.servo1.setPosition(1);
+                r.grijp.setPosition(1);
                 sleep(100);
                 r.powerAll(-0.3);
                 sleep(300);
@@ -108,12 +108,12 @@ public class AutonomousPeriodV2 extends LinearOpMode {
                 break;
 
             } else if(jewelDetector.getLastOrder().toString() == "RED_BLUE") {
-                r.servo2.setPosition(0);
+                r.arm.setPosition(0);
                 sleep(800);
                 r.powerAll(-0.4);
                 sleep(600);
                 r.powerAll(0);
-                r.servo2.setPosition(0.6);
+                r.arm.setPosition(0.6);
                 r.powerAll(0.4);
                 sleep(1650);
                 r.powerAll(0);
@@ -125,7 +125,7 @@ public class AutonomousPeriodV2 extends LinearOpMode {
                 r.powerAll(0.3);
                 sleep(800);
                 r.powerAll(0);
-                r.servo1.setPosition(1);
+                r.grijp.setPosition(1);
                 r.powerAll(-0.3);
                 sleep(300);
                 r.powerAll(0 );
