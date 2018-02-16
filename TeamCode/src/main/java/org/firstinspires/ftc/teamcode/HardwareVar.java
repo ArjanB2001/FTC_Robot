@@ -66,6 +66,8 @@ public class HardwareVar
     public double LBpower;
     public double RFpower;
     public double RBpower;
+    public boolean lowActive;
+    public boolean highActive;
 
     public MediaPlayer wobbly;
 
