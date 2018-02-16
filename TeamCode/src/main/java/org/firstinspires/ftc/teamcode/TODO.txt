@@ -7,6 +7,6 @@ TODO:
 IN PROGRESS:
     -Gyro sensor testen op telefoon || ARJAN
     -TeleOP ||NATHAN
-    -Opruimen en cleanen: OPmodes, commments, servo namen aanpassen en nog meer cleanen || ARJAN
+    -Opruimen en cleanen: commments en nog meer cleanen || ARJAN
 
 DONE:
