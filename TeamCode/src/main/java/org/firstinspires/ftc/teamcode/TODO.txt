@@ -6,7 +6,7 @@ TODO:
 
 IN PROGRESS:
     -Gyro sensor testen op telefoon || ARJAN
-    -TeleOP ||NATHAN
+    -TeleOP, V5_ de lossere servo stand ||NATHAN
     -Opruimen en cleanen: commments en nog meer cleanen || ARJAN
 
 DONE:

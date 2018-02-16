@@ -11,16 +11,15 @@ import static com.sun.tools.javac.util.LayoutCharacters.LF;
 @TeleOp(name = "TeleOpPeriodV5_1 ", group = "Linear Opmode")//
 public class TeleOpPeriodV5_1 extends LinearOpMode {
 
-
     //om HardwareVar class te kunnen gebruiken (gebruik voor elke variabele r.)
     HardwareVar r = new HardwareVar();
     boolean servoActive;
     boolean lowActive;
     boolean highActive;
     String speed;
-    String position;
+    String location;
 
-    public void low() {
+    public void setSpeedLow() {
 
         double o = -Math.hypot(gamepad1.left_stick_x, gamepad1.left_stick_y);
         o = Range.clip(o, -0.3, 0.3);
@@ -38,7 +37,7 @@ public class TeleOpPeriodV5_1 extends LinearOpMode {
 
     }
 
-    public void high() {
+    public void setSpeedHigh() {
 
         double o = -Math.hypot(gamepad1.left_stick_x, gamepad1.left_stick_y);
         double robotAngle = Math.atan2(gamepad1.left_stick_y, gamepad1.left_stick_x) - Math.PI / 4;
@@ -66,52 +65,44 @@ public class TeleOpPeriodV5_1 extends LinearOpMode {
 
         while (opModeIsActive()){
 
-            //<editor-fold deafault="folded", desc="speed control">
+            //<editor-fold deafault="folded", desc="speed control (bumpers)">
             if((gamepad1.left_bumper==true || lowActive) && !gamepad1.right_bumper==true){
                 lowActive = true;
-                low();
+                setSpeedLow();
                 speed = "low speed";
+                sleep(200);
             }else{
                 lowActive = false;
             }
 
             if ((gamepad1.right_bumper==true || highActive) && !gamepad1.left_bumper==true){
                 highActive = true;
-                high();
+                setSpeedHigh();
                 speed = "high speed";
+                sleep(200);
             }else{
                 highActive = false;
             }
             //</editor-fold>
 
-            //<editor-fold default="open", desc="Servo's a b y">
-            if(gamepad1.a) {
-                r.grijp.setPosition(0.75);
-                telemetry.addData("Servo:", "0.75");
-            }
-            if(gamepad1.b) {
-                r.grijp.setPosition(1);
-                telemetry.addData("Servo:", "1");
-            }
-            if(gamepad1.y) {
-                r.grijp.setPosition(0.6);
-                telemetry.addData("Servo:", "0.6");
+            //<editor-fold default="folded", desc="servo control">
+            if(gamepad1.a==true && servoActive==true){
+                servoActive = false;
+                location = "open";
+                r.grijp.setPosition(r.open);
+                sleep(200);
+            }else if(gamepad1.a==true && servoActive==false){
+                servoActive = true;
+                location = "closed";
+                r.grijp.setPosition(r.close);
+                sleep(200);
             }
             //</editor-fold>
 
-            if(gamepad1.a && servoActive==true){
-                servoActive = false;
-                low();
-                position = "open";
-            }else if(gamepad1.a && servoActive==false){
-                servoActive = true;
-            }
-
+            telemetry.addData("Speed", speed);
+            telemetry.addData("ServoLoc", location);
             telemetry.addData("ServoPos", r.grijp.getPosition());
-            telemetry.addData("running", speed);
-            telemetry.addData("Located", position);
             telemetry.update();
-
         }
     }
 }
