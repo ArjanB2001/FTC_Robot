@@ -1,6 +1,11 @@
 TODO:
     -Autonomous wijzigen voor arm aan achterkant
     -Autonomous voor alle 4 de beginplekken maken en testen
-    -TeleOP maken --> Welke gebruiken we? Meerdere soorten? || NATHAN
-    -Kijken voor mogelijkheid 1 of 2 extra blokken in Autnomoous met DogeCV
-    -Onderzoek naar een Gyro, die van telefoon? gyro Sensor? | ARJAN
+    -Kijken voor mogelijkheid 1 of 2 extra blokken in Autnomous met DogeCV
+
+
+IN PROGRESS:
+    -Gyro sensor testen op telefoon ||  Arjan
+    -TeleOP ||Nathan
+
+DONE:
