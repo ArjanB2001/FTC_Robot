@@ -86,15 +86,15 @@ public class TeleOpPeriodV5_1 extends LinearOpMode {
 
             //<editor-fold default="open", desc="Servo's a b y">
             if(gamepad1.a) {
-                r.servo1.setPosition(0.75);
+                r.grijp.setPosition(0.75);
                 telemetry.addData("Servo:", "0.75");
             }
             if(gamepad1.b) {
-                r.servo1.setPosition(1);
+                r.grijp.setPosition(1);
                 telemetry.addData("Servo:", "1");
             }
             if(gamepad1.y) {
-                r.servo1.setPosition(0.6);
+                r.grijp.setPosition(0.6);
                 telemetry.addData("Servo:", "0.6");
             }
             //</editor-fold>
@@ -107,7 +107,7 @@ public class TeleOpPeriodV5_1 extends LinearOpMode {
                 servoActive = true;
             }
 
-            telemetry.addData("ServoPos", r.servo1.getPosition());
+            telemetry.addData("ServoPos", r.grijp.getPosition());
             telemetry.addData("running", speed);
             telemetry.addData("Located", position);
             telemetry.update();

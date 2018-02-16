@@ -13,7 +13,6 @@ public class TeleOpPeriodV5_2 extends LinearOpMode {
     boolean startActive;
     String method;
 
-
     public void low() {
 
         double o = -Math.hypot(gamepad1.left_stick_x, gamepad1.left_stick_y);
