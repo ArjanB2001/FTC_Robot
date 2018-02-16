@@ -67,7 +67,7 @@ public class AutonomousPeriod extends LinearOpMode {
     @Override
     public void runOpMode() {
         r.init(hardwareMap);
-        r.servo1.setPosition(0.68);
+        r.grijp.setPosition(0.68);
 
         waitForStart();
 
@@ -76,7 +76,7 @@ public class AutonomousPeriod extends LinearOpMode {
             r.powerAll(0.4);
             sleep(1100);
             r.powerAll(0);
-            r.servo1.setPosition(1);
+            r.grijp.setPosition(1);
             r.powerAll(-0.2);
             sleep(200);
             r.powerAll(0);

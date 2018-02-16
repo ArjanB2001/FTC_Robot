@@ -95,22 +95,22 @@ public class TeleOpPeriodV3 extends LinearOpMode {
             // = Range.clip(gamepad1.right_stick_x, 0  , 1.0) ;
 
             if(gamepad1.a) {
-                r.servo2.setPosition(0);
+                r.grijp.setPosition(0);
                 telemetry.addData("Servo:", "0.3");
             }
 
             if(gamepad1.x) {
-                r.servo2.setPosition(0.5);
+                r.grijp.setPosition(0.5);
                 telemetry.addData("Servo:", "0");
             }
 
             if(gamepad1.y) {
-                r.servo2.setPosition(1);
+                r.grijp.setPosition(1);
                 telemetry.addData("Servo:", "1");
             }
 
             if(gamepad1.x) {
-                r.servo1.setPosition(0.3);
+                r.grijp.setPosition(0.3);
                 telemetry.addData("Servo:", "0.2");
             }
 
@@ -120,7 +120,7 @@ public class TeleOpPeriodV3 extends LinearOpMode {
             telemetry.addData("rotation RFmotor", r.RFmotor.getPower());
             telemetry.addData("rotation RBmotor", r.RBmotor.getPower());
             telemetry.addData("Degree", degree);
-            telemetry.addData("ServoPos", r.servo1.getPosition());
+            telemetry.addData("ServoPos", r.grijp.getPosition());
             telemetry.update();
 
 
