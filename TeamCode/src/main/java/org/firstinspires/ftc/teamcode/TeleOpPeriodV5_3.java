@@ -85,11 +85,13 @@ public class TeleOpPeriodV5_3 extends LinearOpMode {
                 servoActive = true;
                 location = "closed";
                 r.grijp.setPosition(0.7);
+                sleep(300);
+                if(r.grijp.getPosition()!=0.7){
+                    r.grijp.setPosition(r.grijp.getPosition()+0.01);
+                    location = "custom";
+                }
             }
-            if(r.grijp.getPosition()<0.7){
-                r.grijp.setPosition(r.grijp.getPosition()-0.01);
-                location = "custom";
-            }
+
             //</editor-fold>
 
             telemetry.addData("Speed", speed);
