@@ -72,7 +72,8 @@ public class HardwareVar
     public ElapsedTime runtime = new ElapsedTime();
 
     public double open = 1;
-    public double close = 0.75;
+    public double otherClose = 0.78;
+    public double close = 0.79;
 
     /* Constructor */
     public HardwareVar(){

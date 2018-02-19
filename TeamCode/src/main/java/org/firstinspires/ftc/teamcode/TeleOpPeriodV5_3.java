@@ -5,8 +5,8 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.util.Range;
 
 
-@TeleOp(name = "TeleOpPeriodV5_2 ", group = "Linear Opmode")//
-public class TeleOpPeriodV5_2 extends LinearOpMode {
+@TeleOp(name = "TeleOpPeriodV5_3 ", group = "Linear Opmode")//
+public class TeleOpPeriodV5_3 extends LinearOpMode {
 
     //om HardwareVar class te kunnen gebruiken (gebruik voor elke variabele r.)
     HardwareVar r = new HardwareVar();
@@ -84,12 +84,11 @@ public class TeleOpPeriodV5_2 extends LinearOpMode {
             }else if(gamepad1.a==true && servoActive==false){
                 servoActive = true;
                 location = "closed";
-                r.grijp.setPosition(r.close);
-                sleep(200);
+                r.grijp.setPosition(0.7);
             }
-            if(gamepad1.b==true && servoActive==true){
-                location = "other closed";
-                r.grijp.setPosition(r.otherClose);
+            if(r.grijp.getPosition()<0.7){
+                r.grijp.setPosition(r.grijp.getPosition()-0.01);
+                location = "custom";
             }
             //</editor-fold>
 
