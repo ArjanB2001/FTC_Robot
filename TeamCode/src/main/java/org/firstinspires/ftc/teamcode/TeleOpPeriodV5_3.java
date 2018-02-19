@@ -86,8 +86,8 @@ public class TeleOpPeriodV5_3 extends LinearOpMode {
                 location = "closed";
                 r.grijp.setPosition(0.7);
             }
-            if(r.grijp.getPosition()<0.7){
-                r.grijp.setPosition(r.grijp.getPosition()-0.01);
+            if(r.grijp.getPosition()!=0.7){
+                r.grijp.setPosition(r.grijp.getPosition()+0.01);
                 location = "custom";
             }
             //</editor-fold>
