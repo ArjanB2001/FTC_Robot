@@ -84,13 +84,14 @@ public class TeleOpPeriodV5_2 extends LinearOpMode {
             }else if(gamepad1.a==true && servoActive==false){
                 servoActive = true;
                 location = "closed";
-                r.grijp.setPosition(r.close);
-                sleep(200);
+                r.grijp.setPosition(0.7);
+                sleep(300);
+                if(r.grijp.getPosition()!=0.7){
+                    r.grijp.setPosition(r.grijp.getPosition()+0.01);
+                    location = "custom";
+                }
             }
-            if(gamepad1.b==true && servoActive==true){
-                location = "other closed";
-                r.grijp.setPosition(r.otherClose);
-            }
+
             //</editor-fold>
 
             telemetry.addData("Speed", speed);

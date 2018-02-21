@@ -8,12 +8,15 @@ import com.qualcomm.robotcore.util.Range;
 @TeleOp(name = "TeleOpPeriodV5_3 ", group = "Linear Opmode")//
 public class TeleOpPeriodV5_3 extends LinearOpMode {
 
+    //<editor-fold default="folded", desc="Booleans, Objects, Strings">
     //om HardwareVar class te kunnen gebruiken (gebruik voor elke variabele r.)
     HardwareVar r = new HardwareVar();
-    boolean startActive;
-    boolean servoActive;
+    boolean startActive = true;
+    boolean stickActive = true;
+    boolean servoActive = true;
     String speed;
     String location;
+    //</editor-fold>
 
     public void setSpeedLow() {
 
@@ -61,38 +64,54 @@ public class TeleOpPeriodV5_3 extends LinearOpMode {
 
         while (opModeIsActive()){
 
-            //<editor-fold default="folded", desc="speed control (start)">
-            if(gamepad1.start==true && startActive==true){
-                startActive = false;
-                setSpeedHigh();
-                speed = "high speed";
-                sleep(200);
-            }else if(gamepad1.start==true && startActive==false){
-                startActive = true;
-                setSpeedLow();
-                speed = "low speed";
-                sleep(200);
-            }
-            //</editor-fold>
+            if(gamepad1.left_stick_button==true && gamepad1.right_stick_button==true && stickActive==true){
+                stickActive = false;
 
-            //<editor-fold default="folded", desc="servo control">
-            if(gamepad1.a==true && servoActive==true){
-                servoActive = false;
-                location = "open";
-                r.grijp.setPosition(r.open);
-                sleep(200);
-            }else if(gamepad1.a==true && servoActive==false){
-                servoActive = true;
-                location = "closed";
-                r.grijp.setPosition(0.7);
-                sleep(300);
-                if(r.grijp.getPosition()!=0.7){
-                    r.grijp.setPosition(r.grijp.getPosition()+0.01);
-                    location = "custom";
+                while(stickActive = false) {
+                    //<editor-fold default="folded", desc="speed control (start)">
+                    if (gamepad1.start == true && startActive == true) {
+                        startActive = false;
+                        setSpeedLow();
+                        speed = "low speed";
+                        sleep(200);
+                    } else if (gamepad1.start == true && startActive == false) {
+                        startActive = true;
+                        setSpeedHigh();
+                        speed = "high speed";
+                        sleep(200);
+                    } else {
+                        setSpeedLow();
+                    }
+
+                    //</editor-fold>
+
+                    //<editor-fold default="folded", desc="servo control">
+                    if (gamepad1.a == true && servoActive == true) {
+                        servoActive = false;
+                        location = "open";
+                        r.grijp.setPosition(r.open);
+                        sleep(200);
+                    } else if (gamepad1.a == true && servoActive == false) {
+                        servoActive = true;
+                        location = "closed";
+                        r.grijp.setPosition(0.7);
+                        sleep(300);
+                        if (r.grijp.getPosition() != 0.7) {
+                            r.grijp.setPosition(r.grijp.getPosition() + 0.01);
+                            location = "custom";
+                        }
+                    } else {
+                        r.grijp.setPosition(r.open);
+                    }
+
+                    //</editor-fold>
                 }
-            }
 
-            //</editor-fold>
+            }else if(gamepad1.left_stick_button==true && gamepad1.right_stick_button==true && stickActive==false){
+                stickActive = true;
+
+                r.wobblyControl();
+            }
 
             telemetry.addData("Speed", speed);
             telemetry.addData("ServoLoc", location);

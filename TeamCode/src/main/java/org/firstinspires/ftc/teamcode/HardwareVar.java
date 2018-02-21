@@ -169,4 +169,9 @@ public class HardwareVar
        arm.setPosition(0);
 
    }
+
+    public void wobblyControl(){
+
+
+    }
 }
