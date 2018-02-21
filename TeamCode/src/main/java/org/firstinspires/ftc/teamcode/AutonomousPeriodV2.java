@@ -81,103 +81,47 @@ public class AutonomousPeriodV2 extends LinearOpMode {
         // run until the end of the match (driver presses STOP)
         while (opModeIsActive()) {
 
-            if(jewelDetector.getLastOrder().toString() == "BLUE_RED") {
-                r.arm .setPosition(0);
-                sleep(800);
+            if(jewelDetector.getLastOrder().toString() == "RED_BLUE") {
+                r.arm.setPosition(0);
+                sleep(800);     //arm omlaag en ff wachten
 
-                r.powerAll(0.4);
-                sleep(400);
-
-                r.arm.setPosition(0.6);
-                sleep(600);
-
-                r.powerAll(0);
-                sleep(100);
                 r.right(0.5);
                 sleep(1250);
                 r.powerAll(0);
-                sleep(100);
+                sleep(200);     //90 graden naar rechts draaien
+
+                r.arm.setPosition(0.6);
+                sleep(400);     //arm weer omhoog
+
+                r.powerAll(0.4);
+                sleep(1000);
+                r.powerAll(0);
+                sleep(200);     //stuk naar voren rijden naar cryptobox
+
+                r.right(0.5);
+                sleep(1250);
+                r.powerAll(0);
+                sleep(200);     //90 graden naar rechts draaien
+
                 r.powerAll(0.3);
                 sleep(700);
                 r.powerAll(0);
                 r.grijp.setPosition(1);
-                sleep(100);
-                r.powerAll(-0.3);
-                sleep(300);
-                r.powerAll(0);
-                break;
+                sleep(200);     //Naar voren rijden in cryptobox en grijper los
 
-            } else if(jewelDetector.getLastOrder().toString() == "RED_BLUE") {
-                r.arm.setPosition(0);
-                sleep(800);
-                r.powerAll(-0.4);
-                sleep(600);
-                r.powerAll(0);
-                r.arm.setPosition(0.6);
-                r.powerAll(0.4);
-                sleep(1650);
-                r.powerAll(0);
-                sleep(100);
-                r.right(0.5);
-                sleep(1200);
-                r.powerAll(0);
-                sleep(100);
-                r.powerAll(0.3);
-                sleep(800);
-                r.powerAll(0);
-                r.grijp.setPosition(1);
                 r.powerAll(-0.3);
                 sleep(300);
-                r.powerAll(0 );
+                r.powerAll(0);  //heel klein stukje naar achteren zodat glyph niet wordt aangeraakt
+
+                break;
+            } else if(jewelDetector.getLastOrder().toString() == "BLUE_RED") {
+
                 break;
             }
             jewelDetector.disable();
 
 
             break;
-
-
-
-
-            //Lees kleur
-
-            //Bal omgooien
-
-            //Terug draaien
-
-            //90 graden draaien
-            //0.76 meter naar voren
-
-            // 90 graden terug draaien
-
-            //iets naar voren
-
-            //blok neerzetten
-
-            //ietsje  pietsje naar achter
-
-//            if(r.colorSensor.red() > r.colorSensor.blue() && r.colorSensor.red() >= 5 ) {
-//
-//            }
-//
-//
-//            if(r.colorSensor.blue() > r.colorSensor.red() && r.colorSensor.blue() >= 5 ) {
-//                telemetry.addData("kleur:", "Waarschijnlijk blauw");
-//
-//            }
-
-
-
-
-//            telemetry.addData("Clear", r.colorSensor.alpha());
-//            telemetry.addData("Red  ", r.colorSensor.red());
-//            telemetry.addData("Green", r.colorSensor.green());
-//            telemetry.addData("Blue ", r.colorSensor.blue());
-//
-//
-//            telemetry.update();
-
-
         }
     }
 }
