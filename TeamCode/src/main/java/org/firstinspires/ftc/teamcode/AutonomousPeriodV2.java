@@ -108,14 +108,14 @@ public class AutonomousPeriodV2 extends LinearOpMode {
                 r.powerAll(0);
                 r.grijp.setPosition(1);
                 sleep(200);     //Naar voren rijden in cryptobox en grijper los
-
+ /
                 r.powerAll(-0.3);
                 sleep(300);
                 r.powerAll(0);  //heel klein stukje naar achteren zodat glyph niet wordt aangeraakt
 
                 break;
             } else if(jewelDetector.getLastOrder().toString() == "BLUE_RED") {
-
+  
                 break;
             }
             jewelDetector.disable();
