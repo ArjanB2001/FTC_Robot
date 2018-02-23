@@ -30,6 +30,7 @@
 package org.firstinspires.ftc.teamcode;
 import android.media.MediaPlayer;
 
+import com.qualcomm.hardware.hitechnic.HiTechnicNxtTouchSensor;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
@@ -38,16 +39,17 @@ import com.qualcomm.hardware.matrix.MatrixDcMotorController;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.hardware.ServoController;
 import com.qualcomm.robotcore.hardware.*;
-//import com.qualcomm.robotcore.hardware.TouchSensor;
+import com.qualcomm.robotcore.hardware.TouchSensor;
 import com.qualcomm.robotcore.util.ElapsedTime;
 import java.util.concurrent.TimeUnit;
-
+import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import org.firstinspires.ftc.robotcontroller.external.samples.HardwarePushbot;
 
 import static android.R.interpolator.linear;
 import static com.sun.tools.javac.util.LayoutCharacters.LF;
 
-public class HardwareVar
+public class HardwareVar extends LinearOpMode
 {
     /* Public OpMode members. */
     private MatrixDcMotorController motorController = null;
@@ -61,7 +63,7 @@ public class HardwareVar
 //    public Servo legoServo;
 //    public UltrasonicSensor         rangeSensor;
     public HiTechnicNxtColorSensor  colorSensor;
-    public TouchSensor              touchSensor;
+    public HiTechnicNxtTouchSensor touchSensor;
     public double LFpower;
     public double LBpower;
     public double RFpower;
@@ -72,8 +74,8 @@ public class HardwareVar
     public ElapsedTime runtime = new ElapsedTime();
 
     public double open = 1;
-    public double otherClose = 0.78;
-    public double close = 0.79;
+    public double close = 0.7;
+    public double otherClose = 0.75;
 
     /* Constructor */
     public HardwareVar(){
@@ -170,8 +172,21 @@ public class HardwareVar
 
    }
 
-    public void wobblyControl(){
+    public String sound;
+    public void wobblyControl() {
 
+        if(gamepad1.a) {
+            wobbly.start();
+            sound = "wobbly";
+        }else if(gamepad1.b) {
+            wobbly.stop();
+            sound = "not wobbly anymore";
+        }else {
+            sound = "nothing";
+        }
+    }
+
+    public void runOpMode() {
 
     }
 }
