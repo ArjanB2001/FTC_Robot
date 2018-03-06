@@ -69,7 +69,7 @@ public class HardwareVar extends LinearOpMode
     public double RFpower;
     public double RBpower;
 
-    public MediaPlayer wobbly;
+
 
     public ElapsedTime runtime = new ElapsedTime();
 
@@ -111,7 +111,7 @@ public class HardwareVar extends LinearOpMode
         colorSensor = ahwMap.get(HiTechnicNxtColorSensor.class, "colorSensor");
         //touchSensor = ahwMap.get(TouchSensor.class, "touchSensor");
 
-        MediaPlayer wobbly = MediaPlayer.create(ahwMap.appContext, R.raw.wobbly);
+
 
     }
 
@@ -172,19 +172,6 @@ public class HardwareVar extends LinearOpMode
 
    }
 
-    public String sound;
-    public void wobblyControl() {
-
-        if(gamepad1.a) {
-            wobbly.start();
-            sound = "wobbly";
-        }else if(gamepad1.b) {
-            wobbly.stop();
-            sound = "not wobbly anymore";
-        }else {
-            sound = "nothing";
-        }
-    }
 
     public void runOpMode() {
 
