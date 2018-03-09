@@ -23,16 +23,16 @@ public class MusicOpMode extends LinearOpMode {
         //reset de timer
         r.runtime.reset();
         //wacht tot play (niet init) ingedrukt wordt
-        r.wobbly.setLooping(true);
+//        r.wobbly.setLooping(true);
         waitForStart();
 
         while(opModeIsActive()){
             if(gamepad1.x && !r.playing) {
-                r.wobbly.start();
+//                r.wobbly.start();
                 r.playing =true;
             } else if (gamepad1.x && r.playing) {
-                r.wobbly.pause();
-                r.wobbly.setLooping(true);
+//                r.wobbly.pause();
+//                r.wobbly.setLooping(true);
                 r.playing = false;
             }
 

@@ -66,22 +66,22 @@ public class TeleOpPeriodV5 extends LinearOpMode {
                 telemetry.addData("Servo", r.grijp.getPosition());
             }
 
-            if (gamepad1.x && !playing) {
-                telemetry.addData("Music", "playing");
-                telemetry.update();
-                r.wobbly.start();
-                playing = true;
-
-            }
-
-            if (!gamepad1.x && playing) {
-                telemetry.addData("Music", "stopped");
-                telemetry.update();
-                r.wobbly.stop();
-                r.wobbly.reset();
-                r.wobbly = MediaPlayer.create(hardwareMap.appContext, R.raw.wobbly);
-                playing =  false;
-            }
+//            if (gamepad1.x && !playing) {
+//                telemetry.addData("Music", "playing");
+//                telemetry.update();
+//                r.wobbly.start();
+//                playing = true;
+//
+//            }
+//
+//            if (!gamepad1.x && playing) {
+//                telemetry.addData("Music", "stopped");
+//                telemetry.update();
+//                r.wobbly.stop();
+//                r.wobbly.reset();
+//                r.wobbly = MediaPlayer.create(hardwareMap.appContext, R.raw.wobbly);
+//                playing =  false;
+//            }
 
 
 

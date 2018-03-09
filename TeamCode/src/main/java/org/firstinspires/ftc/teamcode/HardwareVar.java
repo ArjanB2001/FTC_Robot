@@ -70,7 +70,7 @@ public class HardwareVar extends LinearOpMode
     public double RBpower;
 
     Boolean playing = false;
-    MediaPlayer wobbly = MediaPlayer.create(hardwareMap.appContext, R.raw.wobbly);
+//    MediaPlayer wobbly = MediaPlayer.create(hardwareMap.appContext, R.raw.wobbly);
 
     public ElapsedTime runtime = new ElapsedTime();
 
