@@ -113,6 +113,9 @@ public class TeleOpPeriodV5_4 extends LinearOpMode {
             if((gamepad1.left_stick_button==true || musicActive==true) && !gamepad1.right_stick_button==true){
                 musicActive = true;
                 mode = "playing music";
+
+
+
             }else{
                 musicActive = false;
             }

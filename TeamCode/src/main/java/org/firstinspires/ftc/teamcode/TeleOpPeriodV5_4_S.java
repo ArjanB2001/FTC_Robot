@@ -4,17 +4,15 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.util.Range;
 
-import static android.R.attr.mode;
 
-
-@TeleOp(name = "TeleOpPeriodV5_3 ", group = "Linear Opmode")//
-public class TeleOpPeriodV5_3 extends LinearOpMode {
+@TeleOp(name = "TeleOpPeriodV5_4_S ", group = "Linear Opmode")//
+public class TeleOpPeriodV5_4_S extends LinearOpMode {
 
     //<editor-fold default="folded", desc="Booleans, Objects, Strings">
     //om HardwareVar class te kunnen gebruiken (gebruik voor elke variabele r.)
     HardwareVar r = new HardwareVar();
-    boolean startActive = false;
-    boolean stickActive = true;
+    boolean lowActive = true;
+    boolean highActive = true;;
     boolean servoActive = true;
     String speed;
     String location;
@@ -67,28 +65,21 @@ public class TeleOpPeriodV5_3 extends LinearOpMode {
 
         while (opModeIsActive()){
 
-            if(gamepad1.start==true && stickActive == false){
-                stickActive = true;
-                sleep(200);
-            }
-
-            if(gamepad1.start==true && stickActive == true){
-                stickActive = false;
-                sleep(200);
-            }
-
-            if(stickActive=true){
-                //<editor-fold default="folded", desc="speed control (start)">
-                if(gamepad1.start==true && startActive==true){
-                    startActive = false;
-                    setSpeedHigh();
-                    speed = "high speed";
-                    sleep(200);
-                }else if(gamepad1.start==true && startActive==false){
-                    startActive = true;
+                //<editor-fold deafault="folded", desc="speed control (bumpers)">
+                if((gamepad1.left_bumper==true || lowActive) && !gamepad1.right_bumper==true){
+                    lowActive = true;
                     setSpeedLow();
                     speed = "low speed";
-                    sleep(200);
+                }else{
+                    lowActive = false;
+                }
+
+                if ((gamepad1.right_bumper==true || highActive) && !gamepad1.left_bumper==true){
+                    highActive = true;
+                    setSpeedHigh();
+                    speed = "high speed";
+                }else{
+                    highActive = false;
                 }
                 //</editor-fold>
 
@@ -97,32 +88,24 @@ public class TeleOpPeriodV5_3 extends LinearOpMode {
                     servoActive = false;
                     location = "open";
                     r.grijp.setPosition(r.open);
-                    sleep(200);
+                    sleep(500);
                 }else if(gamepad1.a==true && servoActive==false){
                     servoActive = true;
                     location = "closed";
-                    r.grijp.setPosition(0.7);
-                    sleep(300);
-                    if(r.grijp.getPosition()!=0.7){
-                        r.grijp.setPosition(r.grijp.getPosition()+0.01);
-                        location = "custom";
-                    }
+                    r.grijp.setPosition(r.close);
+                    sleep(500);
                 }
 
                 //</editor-fold>
-                mode = "ride";
-            }
 
-            if(stickActive=false) {
-                mode = "music";
-//                r.wobblyControl();
-
-            }
-
-            telemetry.addData("Mode", mode);
-            telemetry.addData("Speed", speed);
-//            telemetry.addData("Playing", r.sound);
+            telemetry.addData("Velocity mode", speed);
             telemetry.addData("Servo location", location);
+            telemetry.addLine();
+            telemetry.addData("", "--------------Instructies--------------:");
+            telemetry.addData("Rechter stick", "link- en rechtsom draaien");
+            telemetry.addData("Linker stick", "voor- en achteruit en opzij");
+            telemetry.addData("LB (low speed)", "langzamer rijden");
+            telemetry.addData("RB (high speed)", "sneller rijden");
             telemetry.update();
 
         }

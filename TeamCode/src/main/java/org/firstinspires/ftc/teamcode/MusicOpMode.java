@@ -13,10 +13,6 @@ public class MusicOpMode extends LinearOpMode {
     //om HardwareVar class te kunnen gebruiken (gebruik voor elke variabele r.)
     HardwareVar r = new HardwareVar();
 
-
-
-
-
     public void runOpMode(){
         //r. runt HardwareVar class
         r.init(hardwareMap);
@@ -28,7 +24,7 @@ public class MusicOpMode extends LinearOpMode {
 
         while(opModeIsActive()){
             if(gamepad1.x && !r.playing) {
-//                r.wobbly.start();
+                r.wobbly.start();
                 r.playing =true;
             } else if (gamepad1.x && r.playing) {
 //                r.wobbly.pause();
