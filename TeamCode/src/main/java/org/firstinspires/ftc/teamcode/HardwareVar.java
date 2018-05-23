@@ -60,6 +60,7 @@ public class HardwareVar extends LinearOpMode
     public DcMotor RBmotor;
     public Servo grijp;
     public Servo arm;
+    public DcMotor Cmotor;
 //    public Servo legoServo;
 //    public UltrasonicSensor         rangeSensor;
     public HiTechnicNxtColorSensor  colorSensor;
@@ -68,15 +69,12 @@ public class HardwareVar extends LinearOpMode
     public double LBpower;
     public double RFpower;
     public double RBpower;
-
-    Boolean playing = false;
-//    MediaPlayer wobbly = MediaPlayer.create(hardwareMap.appContext, R.raw.wobbly);
+    public double Cpower;
 
     public ElapsedTime runtime = new ElapsedTime();
 
     public double open = 1;
     public double close = 0.7;
-    public double otherClose = 0.75;
 
     /* Constructor */
     public HardwareVar(){
